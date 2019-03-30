@@ -10,6 +10,8 @@ package proyecto1;
  * @author Patrixito
  */
 public class Proyecto1 {
+    
+    String algo;
 
     /**
      * @param args the command line arguments
