@@ -95,6 +95,11 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         jLabel7.setText("Costo por día");
 
         tVIN.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        tVIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tVINActionPerformed(evt);
+            }
+        });
 
         tAnho.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
 
@@ -191,6 +196,11 @@ public class AgregarVehiculo extends javax.swing.JFrame {
 
         bCancelarAgregarVehiculo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         bCancelarAgregarVehiculo.setText("Cancelar");
+        bCancelarAgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarAgregarVehiculoActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jButton3.setText("Browse...");
@@ -215,9 +225,8 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel15)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator1))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -272,11 +281,8 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(lImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel12)
+                            .addComponent(lImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton3))))
@@ -393,6 +399,14 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     private void bAceptarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAgregarVehiculoActionPerformed
         //new Vehiculo(EEstado.Activo, false, tPlaca.getText(), tAnho.getText(), EEstilo.Compacto, cColor.getSelectedItem().toString(), tMarca.getText(), (int) cPasajeros.getSelectedItem().toString(), (float) tKilometro.getText(), int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas);
     }//GEN-LAST:event_bAceptarAgregarVehiculoActionPerformed
+
+    private void bCancelarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAgregarVehiculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCancelarAgregarVehiculoActionPerformed
+
+    private void tVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tVINActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tVINActionPerformed
 
     /**
      * @param args the command line arguments
