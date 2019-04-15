@@ -5,8 +5,16 @@
  */
 package proyecto1;
 
+import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.List;
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -19,6 +27,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
      */
     public AgregarVehiculo() {
         initComponents();
+        inicializarElementos();
     }
 
     /**
@@ -137,7 +146,6 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         jLabel14.setText("Sede");
 
         cEstilo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        cEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compacto", "Pick Up", "Intermedio", "SUV", "Minivan", "Convertible", "Económico", " " }));
         cEstilo.setPreferredSize(new java.awt.Dimension(100, 21));
         cEstilo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,7 +397,35 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_cPasajerosActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        lImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/Imagenes/Vehiculos/fortunerToyota.png")));
+        //lImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/Imagenes/Vehiculos/fortunerToyota.png")));
+        
+        
+        JFileChooser jfc = new JFileChooser();
+        jfc.setCurrentDirectory(new File(System.getProperty("user.dir")));
+
+        int returnValue = jfc.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = jfc.getSelectedFile();               
+                System.out.println(convertirPath(selectedFile.getAbsolutePath()));
+                BufferedImage imagen = null;
+            try {
+                imagen = ImageIO.read(selectedFile);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(AgregarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try
+            {
+                lImagen.setIcon(new ImageIcon(imagen));
+            }
+            catch (Exception e)
+            {
+                System.out.println(e);
+            }
+                
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cEstiloActionPerformed
@@ -408,6 +444,27 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tVINActionPerformed
 
+    private String convertirPath(String s)
+    {
+        String resultado = "";
+        for(int a = 0; a < s.length(); a++)
+        {
+            if(s.charAt(a) == '\\')
+            {
+                resultado = resultado + "/";
+            }
+            else
+                resultado = resultado + s.charAt(a);
+        }
+        return resultado;
+    }
+    
+    public void inicializarElementos()
+    {
+        EEstilo.values().toString();        
+        cEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(EEstilo.toStringArray()));
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -439,6 +496,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AgregarVehiculo().setVisible(true);
+                
             }
         });
     }

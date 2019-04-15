@@ -16,5 +16,19 @@ public enum EEstilo {
     SUV,
     Minivan,
     Convertible,
-    Economico
+    Economico;
+
+    public static String[] toStringArray() {
+        int contador = 0;
+        String[] resultado = new String[EEstilo.values().length];
+        for (EEstilo E : EEstilo.values())
+        {
+            resultado[contador] = E.toString();
+            contador++;
+        }
+              
+        return resultado;
+    }
 }
+
+
