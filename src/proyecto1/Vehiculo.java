@@ -16,7 +16,7 @@ public class Vehiculo {
     EEstado estado;
     boolean rentado;
     String placa;
-    Date anho;
+    int anho;
     EEstilo estilo;
     String color;
     String marca;
@@ -35,7 +35,7 @@ public class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(EEstado estado, boolean rentado, String placa, Date anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas) {
+    public Vehiculo(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas) {
         this.estado = estado;
         this.rentado = rentado;
         this.placa = placa;
@@ -80,13 +80,14 @@ public class Vehiculo {
         this.placa = placa;
     }
 
-    public Date getAnho() {
+    public int getAnho() {
         return anho;
     }
 
-    public void setAnho(Date anho) {
+    public void setAnho(int anho) {
         this.anho = anho;
     }
+
 
     public EEstilo getEstilo() {
         return estilo;
@@ -199,6 +200,15 @@ public class Vehiculo {
     public void setListaCoordenadas(List<CoordenadasVehiculo> listaCoordenadas) {
         this.listaCoordenadas = listaCoordenadas;
     }
+
+    
+    public String toString() {
+        //return "Vehiculo{" + "estado=" + estado + ", rentado=" + rentado + ", placa=" + placa + ", anho=" + anho + ", estilo=" + estilo + ", color=" + color + ", marca=" + marca + ", capacidad=" + capacidad + ", kilometraje=" + kilometraje + ", numPuertas=" + numPuertas + ", numVim=" + numVim + ", mpg=" + mpg + ", sedePertenencia=" + sedePertenencia + ", costoPorDia=" + costoPorDia + ", capacidadMaletas=" + capacidadMaletas + ", transmision=" + transmision + ", historialServiciosMantenimiento=" + historialServiciosMantenimiento + ", listaCoordenadas=" + listaCoordenadas + '}';
+        return "{\"estado\":\"" +estado+"\",\"rentado\":\""+rentado+"\""+",\"placa\":\""+placa+"\"" +",\"anho\":\""+anho+"\"" +",\"estilo\":\""+estilo+"\"" +",\"color\":\""+color+"\"" +",\"marca\":\""+marca+"\"" +",\"capacidad\":\""+capacidad+"\"" +",\"kilometraje\":\""+kilometraje+"\"" +",\"numPuertas\":\""+numPuertas+"\"" +",\"numVim\":\""+numVim+"\"" +",\"mpg\":\""+mpg+"\"" +",\"sedePertenencia\":\""+sedePertenencia+"\"" +",\"costoPorDia\":\""+costoPorDia+"\"" +",\"capacidadMaletas\":\""+capacidadMaletas+"\"" +",\"transmision\":\""+transmision+"\"" +",\"historialServiciosMantenimiento\":\""+historialServiciosMantenimiento+"\"" +",\"listaCoordenadas\":\""+listaCoordenadas+"\"" +"}";
+    }
+
+   
+    
     
     
 }

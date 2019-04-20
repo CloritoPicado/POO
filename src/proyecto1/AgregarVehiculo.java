@@ -28,6 +28,9 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     public AgregarVehiculo() {
         initComponents();
         inicializarElementos();
+        new Controlador();
+        //System.out.println("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
+        
     }
 
     /**
