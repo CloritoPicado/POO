@@ -38,7 +38,7 @@ public class Controlador {
     
     public void escribirJSON(JSONObject o)
     {
-        try (FileWriter file = new FileWriter("employees.json",true)) {
+        try (FileWriter file = new FileWriter("Argonautas/vehiculo.json",true)) {
  
             file.write(o.toString());
             file.flush();
@@ -52,7 +52,7 @@ public class Controlador {
     {
         InputStream is = null;
         try {
-            is = new FileInputStream("employees.json");
+            is = new FileInputStream("Argonautas/vehiculo.json");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
