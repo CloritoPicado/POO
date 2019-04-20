@@ -16,10 +16,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -32,25 +32,31 @@ public class Controlador {
         Vehiculo v = new Vehiculo(EEstado.Activo, true, "BBB111", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
         escribirJSON(almacenarVehiculo(v));
         System.out.println(v.toString());
-        leerJSON("vehiculo.json");
+       // leerJSON("vehiculo.json");
 
     }
     
     public void escribirJSON(JSONObject o)
     {
-        try (FileWriter file = new FileWriter("Argonautas/vehiculo.json",true)) {
- 
-            file.write(o.toString());
+        JSONParser jsonParser = new JSONParser();
+
+        try {
+            Object obj = jsonParser.parse(new FileReader("Argonautas/Distritos.json"));
+            JSONArray jsonArray = (JSONArray)obj;
+            jsonArray.add(o);
+            FileWriter file = new FileWriter("Argonautas/vehiculo.json");
+            file.write(jsonArray.toJSONString());
             file.flush();
- 
-        } catch (IOException e) {
-            System.out.println(e);
+            file.close();
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
         }
     }
     
     public void leerJSON(String archivo)
     {
-        InputStream is = null;
+        /*InputStream is = null;
         try {
             is = new FileInputStream("Argonautas/" + archivo);
         } catch (FileNotFoundException ex) {
@@ -62,7 +68,37 @@ public class Controlador {
         System.out.println("Estado  : " + object.getString("estado"));
         System.out.println("Rentado: " + object.getBoolean("rentado"));
         System.out.println("Placa : " + object.getString("placa"));
-        System.out.println("Año : " + object.getInt("anho"));
+        System.out.println("Año : " + object.getInt("anho"));*/
+        
+        JSONParser jsonParser = new JSONParser();
+
+        try {
+            Object obj = jsonParser.parse(new FileReader("Argonautas/vehiculo.json"));
+            JSONArray jsonArray = (JSONArray)obj;
+
+            System.out.println(jsonArray);
+
+            JSONObject student1 = new JSONObject();
+            student1.put("name", "BROCK");
+            student1.put("age", new Integer(3));
+
+            JSONObject student2 = new JSONObject();
+            student2.put("name", "Joe");
+            student2.put("age", new Integer(4));
+
+            jsonArray.add(student1);
+            jsonArray.add(student2);
+
+            System.out.println(jsonArray);
+
+            FileWriter file = new FileWriter("D:\\student.json");
+            file.write(jsonArray.toJSONString());
+            file.flush();
+            file.close();
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
 
     }
     
@@ -70,7 +106,7 @@ public class Controlador {
     
     public JSONObject almacenarVehiculo(Vehiculo v)
     {
-        JSONObject objeto = new JSONObject(v.toString());
+        JSONObject objeto = new JSONObject(v.toMap());
         return objeto;
 
     }

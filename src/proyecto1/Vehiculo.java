@@ -206,6 +206,31 @@ public class Vehiculo {
         //return "Vehiculo{" + "estado=" + estado + ", rentado=" + rentado + ", placa=" + placa + ", anho=" + anho + ", estilo=" + estilo + ", color=" + color + ", marca=" + marca + ", capacidad=" + capacidad + ", kilometraje=" + kilometraje + ", numPuertas=" + numPuertas + ", numVim=" + numVim + ", mpg=" + mpg + ", sedePertenencia=" + sedePertenencia + ", costoPorDia=" + costoPorDia + ", capacidadMaletas=" + capacidadMaletas + ", transmision=" + transmision + ", historialServiciosMantenimiento=" + historialServiciosMantenimiento + ", listaCoordenadas=" + listaCoordenadas + '}';
         return "{\"estado\":\"" +estado+"\",\"rentado\":\""+rentado+"\""+",\"placa\":\""+placa+"\"" +",\"anho\":\""+anho+"\"" +",\"estilo\":\""+estilo+"\"" +",\"color\":\""+color+"\"" +",\"marca\":\""+marca+"\"" +",\"capacidad\":\""+capacidad+"\"" +",\"kilometraje\":\""+kilometraje+"\"" +",\"numPuertas\":\""+numPuertas+"\"" +",\"numVim\":\""+numVim+"\"" +",\"mpg\":\""+mpg+"\"" +",\"sedePertenencia\":\""+sedePertenencia+"\"" +",\"costoPorDia\":\""+costoPorDia+"\"" +",\"capacidadMaletas\":\""+capacidadMaletas+"\"" +",\"transmision\":\""+transmision+"\"" +",\"historialServiciosMantenimiento\":\""+historialServiciosMantenimiento+"\"" +",\"listaCoordenadas\":\""+listaCoordenadas+"\"" +"}";
     }
+    
+    public Map toMap()
+    {
+        Map<String, Object> mapa = new HashMap<String, Object>();
+        mapa.put("Estado", estado);
+        mapa.put("Rentado", rentado);
+        mapa.put("Placa", placa);
+        mapa.put("Año", anho);
+        mapa.put("Estilo", estilo);
+        mapa.put("Color", color);
+        mapa.put("Marca", marca);
+        mapa.put("Capacidad", capacidad);
+        mapa.put("Kilometraje", kilometraje);
+        mapa.put("Numero de puertas", numPuertas);
+        mapa.put("VIM", numVim);
+        mapa.put("MPG", mpg);
+        mapa.put("Sede de pertencia", sedePertenencia);
+        mapa.put("Costo por día", costoPorDia);
+        mapa.put("Capacidad de maletas", capacidadMaletas);
+        mapa.put("Transmision", transmision);
+        mapa.put("HistorialServicio", null);
+        mapa.put("Coordenadas", null);
+        return mapa;
+        
+    }
 
    
     
