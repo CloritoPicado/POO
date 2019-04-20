@@ -32,7 +32,7 @@ public class Controlador {
         Vehiculo v = new Vehiculo(EEstado.Activo, true, "BBB111", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
         escribirJSON(almacenarVehiculo(v));
         System.out.println(v.toString());
-        leerJSON();
+        leerJSON("vehiculo.json");
 
     }
     
@@ -48,11 +48,11 @@ public class Controlador {
         }
     }
     
-    public void leerJSON()
+    public void leerJSON(String archivo)
     {
         InputStream is = null;
         try {
-            is = new FileInputStream("Argonautas/vehiculo.json");
+            is = new FileInputStream("Argonautas/" + archivo);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
