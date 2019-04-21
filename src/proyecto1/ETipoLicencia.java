@@ -5,11 +5,13 @@
  */
 package proyecto1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Patrixito
  */
-public enum ETipoLicencia {
+public enum ETipoLicencia{
     
     A1,
     A2,
@@ -25,6 +27,18 @@ public enum ETipoLicencia {
     D2,
     D3,
     E1,
-    E2
+    E2;
     
+    public static String[] toStringArray() {
+        int contador = 0;
+        String[] resultado = new String[values().length];
+        for (Enum E : values())
+        {
+            resultado[contador] = E.toString();
+            contador++;
+        }
+              
+        return resultado;
+    }
+  
 }

@@ -5,11 +5,26 @@
  */
 package proyecto1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Patrixito
  */
-public enum ETipoMantenimiento {
+public enum ETipoMantenimiento{
     Correctivo,
-    Preventivo,
+    Preventivo;
+    
+    public static String[] toStringArray() {
+        int contador = 0;
+        String[] resultado = new String[values().length];
+        for (Enum E : values())
+        {
+            resultado[contador] = E.toString();
+            contador++;
+        }
+              
+        return resultado;
+    }
+
 }

@@ -5,6 +5,8 @@
  */
 package proyecto1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Patrixito
@@ -20,8 +22,8 @@ public enum EEstilo {
 
     public static String[] toStringArray() {
         int contador = 0;
-        String[] resultado = new String[EEstilo.values().length];
-        for (EEstilo E : EEstilo.values())
+        String[] resultado = new String[values().length];
+        for (Enum E : values())
         {
             resultado[contador] = E.toString();
             contador++;

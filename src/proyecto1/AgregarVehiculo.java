@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -31,6 +32,10 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         new Controlador();
         //System.out.println("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
         
+    }
+    
+     public static String[] getNames(Class<? extends Enum<?>> e) {
+        return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
     }
 
     /**
@@ -463,9 +468,8 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     }
     
     public void inicializarElementos()
-    {
-        EEstilo.values().toString();        
-        cEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(EEstilo.toStringArray()));
+    {    
+        cEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(ETipoLicencia.toStringArray()));
 
     }
     /**

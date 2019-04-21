@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package proyecto1;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,15 +15,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 
 /**
  *
@@ -29,22 +30,84 @@ import org.json.simple.parser.ParseException;
 public class Controlador {
 
     public Controlador(){
+       
+        //escribirJSON(almacenarVehiculo(v),"vehiculos.json");
+        //System.out.println(v.toString());
         Vehiculo v = new Vehiculo(EEstado.Activo, true, "BBB111", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
-        escribirJSON(almacenarVehiculo(v));
-        System.out.println(v.toString());
-       // leerJSON("vehiculo.json");
+        Vehiculo v2 = new Vehiculo(EEstado.Activo, true, "BBB112", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
+        List<Vehiculo> lista = new ArrayList<>();
+        lista.add(v);
+        lista.add(v2);
+        ListaVehiculos lVehiculos = new ListaVehiculos(lista);
+        //serializador(lVehiculos);
+        deserealizarVehiculo();
+        deserealizarUbicacion();
+        //leerJSON("vehiculo.json");
 
     }
     
-    public void escribirJSON(JSONObject o)
+    public void serializador(Object o, String archivo)
+    {
+        //Gson gson = new Gson();        
+        try (Writer writer = new FileWriter("src/Argonautas/"+archivo)) {
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(o, writer);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deserealizarVehiculo()
+    {
+        Gson gson = new Gson();
+
+    try {
+
+        BufferedReader br = new BufferedReader(
+            new FileReader("src/Argonautas/vehiculos.json"));
+
+        //convert the json string back to object
+        ListaVehiculos v = gson.fromJson(br, ListaVehiculos.class);
+        System.out.println(v.getlVehiculos().get(1));
+
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    }
+    
+    public void deserealizarUbicacion()
+    {
+        Gson gson = new Gson();
+
+    try {
+
+        BufferedReader br = new BufferedReader(
+            new FileReader("src/Argonautas/Distritos.json"));
+
+        //convert the json string back to object
+        Ubicacion ubicacion = gson.fromJson(br, Ubicacion.class);
+        System.out.println(ubicacion.getProvincias().get(4).getTitle());
+
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    }
+             
+    
+    /*public void escribirJSON(JSONObject o, String archivo)
     {
         JSONParser jsonParser = new JSONParser();
 
         try {
-            Object obj = jsonParser.parse(new FileReader("Argonautas/Distritos.json"));
-            JSONArray jsonArray = (JSONArray)obj;
+            Object obj = jsonParser.parse(new FileReader("Argonautas/"+archivo));
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.add(obj);
             jsonArray.add(o);
-            FileWriter file = new FileWriter("Argonautas/vehiculo.json");
+            FileWriter file = new FileWriter("Argonautas/"+archivo);
             file.write(jsonArray.toJSONString());
             file.flush();
             file.close();
@@ -56,47 +119,22 @@ public class Controlador {
     
     public void leerJSON(String archivo)
     {
-        /*InputStream is = null;
-        try {
-            is = new FileInputStream("Argonautas/" + archivo);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        JSONTokener tokener = new JSONTokener(is);
-        JSONObject object = new JSONObject(tokener);
-        System.out.println("Estado  : " + object.getString("estado"));
-        System.out.println("Rentado: " + object.getBoolean("rentado"));
-        System.out.println("Placa : " + object.getString("placa"));
-        System.out.println("Año : " + object.getInt("anho"));*/
         
         JSONParser jsonParser = new JSONParser();
+         
+        try (FileReader reader = new FileReader("Argonautas/"+archivo))
+        {
+            Object obj = jsonParser.parse(reader);
+            JSONArray datos = (JSONArray) obj;
+            
+            System.out.println(datos);
 
-        try {
-            Object obj = jsonParser.parse(new FileReader("Argonautas/vehiculo.json"));
-            JSONArray jsonArray = (JSONArray)obj;
-
-            System.out.println(jsonArray);
-
-            JSONObject student1 = new JSONObject();
-            student1.put("name", "BROCK");
-            student1.put("age", new Integer(3));
-
-            JSONObject student2 = new JSONObject();
-            student2.put("name", "Joe");
-            student2.put("age", new Integer(4));
-
-            jsonArray.add(student1);
-            jsonArray.add(student2);
-
-            System.out.println(jsonArray);
-
-            FileWriter file = new FileWriter("D:\\student.json");
-            file.write(jsonArray.toJSONString());
-            file.flush();
-            file.close();
-
-        } catch (ParseException | IOException e) {
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
@@ -109,6 +147,6 @@ public class Controlador {
         JSONObject objeto = new JSONObject(v.toMap());
         return objeto;
 
-    }
+    }*/
     
 }

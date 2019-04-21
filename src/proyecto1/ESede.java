@@ -5,17 +5,31 @@
  */
 package proyecto1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Patrixito
  */
-public enum ESede {
+public enum ESede{
     San_Jose,
     Cartago,
     Heredia,
     Limon,
     Guanacaste,
     Puntarenas,
-    Alajuela
+    Alajuela;
     
+    public static String[] toStringArray() {
+        int contador = 0;
+        String[] resultado = new String[values().length];
+        for (Enum E : values())
+        {
+            resultado[contador] = E.toString();
+            contador++;
+        }
+              
+        return resultado;
+    }
+ 
 }
