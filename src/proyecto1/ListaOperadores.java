@@ -11,14 +11,14 @@ import java.util.List;
  *
  * @author Patrixito
  */
-public class ListaOperador {
+public class ListaOperadores {
     
     List<Operador> operadores;
 
-    public ListaOperador() {
+    public ListaOperadores() {
     }
 
-    public ListaOperador(List<Operador> operadores) {
+    public ListaOperadores(List<Operador> operadores) {
         this.operadores = operadores;
     }
 

@@ -11,7 +11,6 @@ package proyecto1;
  */
 public class Cliente extends Persona{
     
-    int cedula;
     Direccion direccion;
     int telefono;
     Licencia licencia;
@@ -20,29 +19,19 @@ public class Cliente extends Persona{
         
     }
 
-    public Cliente(int cedula, Direccion direccion, int telefono, Licencia licencia, String nombre, String correo) {
-        super(nombre, correo);
-        this.cedula = cedula;
+    public Cliente(Direccion direccion, int telefono, Licencia licencia, String nombre, String correo, int identificacion) {
+        super(nombre, correo,identificacion);
         this.direccion = direccion;
         this.telefono = telefono;
         this.licencia = licencia;
     }
 
     public Cliente(int cedula, Direccion direccion, int telefono, Licencia licencia) {
-        this.cedula = cedula;
         this.direccion = direccion;
         this.telefono = telefono;
         this.licencia = licencia;
     }
-
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
+    
     public Direccion getDireccion() {
         return direccion;
     }

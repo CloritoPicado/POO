@@ -12,18 +12,22 @@ import java.util.List;
  * @author Patrixito
  */
 public class ListaVehiculos {
-    List<Vehiculo> lVehiculos;
+    List<Vehiculo> Vehiculos;
+
+    public ListaVehiculos() {
+    }
+        
 
     public ListaVehiculos(List<Vehiculo> lVehiculos) {
-        this.lVehiculos = lVehiculos;
+        this.Vehiculos = lVehiculos;
     }
 
     public List<Vehiculo> getlVehiculos() {
-        return lVehiculos;
+        return Vehiculos;
     }
 
     public void setlVehiculos(List<Vehiculo> lVehiculos) {
-        this.lVehiculos = lVehiculos;
+        this.Vehiculos = lVehiculos;
     }
     
     

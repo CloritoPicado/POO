@@ -16,8 +16,8 @@ public class Operador extends Persona{
     public Operador() {
     }
 
-    public Operador(String contrasenha, String nombre, String correo) {
-        super(nombre, correo);
+    public Operador(String contrasenha, String nombre, String correo, int identificacion) {
+        super(nombre, correo,identificacion);
         this.contrasenha = contrasenha;
     }
 

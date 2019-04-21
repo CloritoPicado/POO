@@ -11,16 +11,27 @@ package proyecto1;
  */
 public class Persona {
     
+    int identificacion;
     String nombre;
     String correo;
 
-    public Persona(String nombre, String correo) {
+    public Persona(String nombre, String correo, int identificacion) {
         this.nombre = nombre;
         this.correo = correo;
+        this.identificacion = identificacion;
     }
 
     public Persona() {
     }
+
+    public int getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
+    }
+        
 
     protected String getNombre() {
         return nombre;

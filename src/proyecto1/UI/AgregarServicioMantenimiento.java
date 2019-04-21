@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto1;
+package proyecto1.UI;
 
 /**
  *
@@ -65,6 +65,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1050, 600));
 
         TituloVentana.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         TituloVentana.setText("Agregar Servicio Mantenimiento");

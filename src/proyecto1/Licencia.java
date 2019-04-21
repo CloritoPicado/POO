@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -13,9 +14,9 @@ import java.util.*;
  */
 public class Licencia {
     
-    int numero;
-    Date fechaEmision;
-    Date fechaExpiracion;
+    int identificacion;
+    LocalDate fechaEmision;
+    LocalDate fechaExpiracion;
     ETipoLicencia tipo;
     String imagen;
 
@@ -23,35 +24,35 @@ public class Licencia {
     }
         
 
-    public Licencia(int numero, Date fechaEmision, Date fechaExpiracion, ETipoLicencia tipo, String imagen) {
-        this.numero = numero;
+    public Licencia(int identificacion, LocalDate fechaEmision, LocalDate fechaExpiracion, ETipoLicencia tipo, String imagen) {
+        this.identificacion = identificacion;
         this.fechaEmision = fechaEmision;
         this.fechaExpiracion = fechaExpiracion;
         this.tipo = tipo;
         this.imagen = imagen;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getIdentificacion() {
+        return identificacion;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
-    public Date getFechaEmision() {
+    public LocalDate getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(Date fechaEmision) {
+    public void setFechaEmision(LocalDate fechaEmision) {
         this.fechaEmision = fechaEmision;
     }
 
-    public Date getFechaExpiracion() {
+    public LocalDate getFechaExpiracion() {
         return fechaExpiracion;
     }
 
-    public void setFechaExpiracion(Date fechaExpiracion) {
+    public void setFechaExpiracion(LocalDate fechaExpiracion) {
         this.fechaExpiracion = fechaExpiracion;
     }
 

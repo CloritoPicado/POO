@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto1;
+package proyecto1.UI;
 
 import java.awt.image.BufferedImage;
 import java.util.Date;
@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import proyecto1.Controlador;
+import proyecto1.ETipoLicencia;
 
 /**
  *
@@ -86,7 +88,6 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         tPlaca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1050, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(1050, 600));
 
