@@ -5,16 +5,19 @@
  */
 package proyecto1.UI;
 
+import proyecto1.Controlador;
+
 /**
  *
  * @author Patrixito
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
-
+    Controlador controlador;
     /**
      * Creates new form PantallaPrincipal
      */
-    public PantallaPrincipal() {
+    public PantallaPrincipal(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -27,19 +30,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bOperador = new javax.swing.JButton();
+        bEmpresa = new javax.swing.JButton();
+        bCliente = new javax.swing.JButton();
+        bMantenimiento = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        bVehiculo = new javax.swing.JButton();
+        bEditarVehiculo = new javax.swing.JButton();
+        bNuevaReservacion = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton8 = new javax.swing.JButton();
+        bConsultarReservacion = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        bAgregarRuta = new javax.swing.JButton();
+        bVisualizarRuta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,32 +50,38 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1050, 600));
+        setResizable(false);
         setSize(new java.awt.Dimension(1050, 600));
 
-        jButton1.setText("Agregar operador");
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 100));
-
-        jButton2.setText("Agregar empresa");
-        jButton2.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bOperador.setText("Agregar operador");
+        bOperador.setPreferredSize(new java.awt.Dimension(200, 100));
+        bOperador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bOperadorActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Agregar cliente");
-        jButton3.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bEmpresa.setText("Agregar empresa");
+        bEmpresa.setPreferredSize(new java.awt.Dimension(200, 100));
+        bEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bEmpresaActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Realizar mantenimiento");
-        jButton4.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bCliente.setText("Agregar cliente");
+        bCliente.setPreferredSize(new java.awt.Dimension(200, 100));
+        bCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bClienteActionPerformed(evt);
+            }
+        });
+
+        bMantenimiento.setText("Realizar mantenimiento");
+        bMantenimiento.setPreferredSize(new java.awt.Dimension(200, 100));
+        bMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMantenimientoActionPerformed(evt);
             }
         });
 
@@ -80,17 +89,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jSeparator1.setMaximumSize(new java.awt.Dimension(5, 510));
         jSeparator1.setPreferredSize(new java.awt.Dimension(5, 510));
 
-        jButton5.setText("Agregar vehículo");
-        jButton5.setPreferredSize(new java.awt.Dimension(200, 100));
+        bVehiculo.setText("Agregar vehículo");
+        bVehiculo.setPreferredSize(new java.awt.Dimension(200, 100));
 
-        jButton6.setText("Editar vehículo");
-        jButton6.setPreferredSize(new java.awt.Dimension(200, 100));
+        bEditarVehiculo.setText("Editar vehículo");
+        bEditarVehiculo.setPreferredSize(new java.awt.Dimension(200, 100));
 
-        jButton7.setText("Realizar reservación");
-        jButton7.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        bNuevaReservacion.setText("Realizar reservación");
+        bNuevaReservacion.setPreferredSize(new java.awt.Dimension(200, 100));
+        bNuevaReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                bNuevaReservacionActionPerformed(evt);
             }
         });
 
@@ -98,11 +107,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jSeparator2.setMaximumSize(new java.awt.Dimension(5, 510));
         jSeparator2.setPreferredSize(new java.awt.Dimension(5, 510));
 
-        jButton8.setText("Consultar reservación");
-        jButton8.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        bConsultarReservacion.setText("Consultar reservación");
+        bConsultarReservacion.setPreferredSize(new java.awt.Dimension(200, 100));
+        bConsultarReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                bConsultarReservacionActionPerformed(evt);
             }
         });
 
@@ -110,19 +119,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jSeparator3.setMaximumSize(new java.awt.Dimension(5, 510));
         jSeparator3.setPreferredSize(new java.awt.Dimension(5, 510));
 
-        jButton9.setText("Agregar ruta");
-        jButton9.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        bAgregarRuta.setText("Agregar ruta");
+        bAgregarRuta.setPreferredSize(new java.awt.Dimension(200, 100));
+        bAgregarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                bAgregarRutaActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Visualizar ruta");
-        jButton10.setPreferredSize(new java.awt.Dimension(200, 100));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        bVisualizarRuta.setText("Visualizar ruta");
+        bVisualizarRuta.setPreferredSize(new java.awt.Dimension(200, 100));
+        bVisualizarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                bVisualizarRutaActionPerformed(evt);
             }
         });
 
@@ -147,9 +156,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel1)))
@@ -160,12 +169,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(bMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bEditarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,8 +185,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bNuevaReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bConsultarReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel3)))
@@ -188,10 +197,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bAgregarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(bVisualizarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -209,11 +218,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -221,11 +230,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bEditarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,96 +242,71 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bNuevaReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(bConsultarReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bAgregarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bVisualizarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClienteActionPerformed
+        new AgregarCliente(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bClienteActionPerformed
+
+    private void bEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpresaActionPerformed
+        new AgregarEmpresaMantenimiento(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bEmpresaActionPerformed
+
+    private void bMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMantenimientoActionPerformed
+        new AgregarServicioMantenimiento(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bMantenimientoActionPerformed
+
+    private void bNuevaReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevaReservacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bNuevaReservacionActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bConsultarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarReservacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bConsultarReservacionActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bAgregarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarRutaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bAgregarRutaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void bVisualizarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVisualizarRutaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_bVisualizarRutaActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void bOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOperadorActionPerformed
+        new AgregarOperador(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bOperadorActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaPrincipal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton bAgregarRuta;
+    private javax.swing.JButton bCliente;
+    private javax.swing.JButton bConsultarReservacion;
+    private javax.swing.JButton bEditarVehiculo;
+    private javax.swing.JButton bEmpresa;
+    private javax.swing.JButton bMantenimiento;
+    private javax.swing.JButton bNuevaReservacion;
+    private javax.swing.JButton bOperador;
+    private javax.swing.JButton bVehiculo;
+    private javax.swing.JButton bVisualizarRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

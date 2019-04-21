@@ -5,16 +5,21 @@
  */
 package proyecto1.UI;
 
+import proyecto1.Controlador;
+
 /**
  *
  * @author Francisco
  */
 public class AgregarServicioMantenimiento extends javax.swing.JFrame {
-
+    
+    Controlador controlador;
+    
     /**
      * Creates new form AgregarEmpresaMantenimiento
      */
-    public AgregarServicioMantenimiento() {
+    public AgregarServicioMantenimiento(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -38,7 +43,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TipoDeServicio = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        AceptarButton = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         EmpresaResponsable = new javax.swing.JComboBox<>();
@@ -84,9 +89,14 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo de Servicio");
 
-        AceptarButton.setText("Aceptar");
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
-        Cancelar.setText("Cancelar");
+        Cancelar.setText("Aceptar");
 
         jLabel4.setText("Empresa Responsable");
 
@@ -145,7 +155,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(Cancelar)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(AceptarButton))
+                                            .addComponent(bCancelar))
                                         .addComponent(IdentificadorServicioIN, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(MontoPagadoIN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))))
                         .addGap(22, 22, 22))))
@@ -185,7 +195,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Cancelar)
-                        .addComponent(AceptarButton))
+                        .addComponent(bCancelar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,44 +210,13 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MontoPagadoINActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarServicioMantenimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarServicioMantenimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarServicioMantenimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarServicioMantenimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        new PantallaPrincipal(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bCancelarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgregarServicioMantenimiento().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AceptarButton;
     private javax.swing.JButton Cancelar;
     private javax.swing.JComboBox<String> EmpresaResponsable;
     private javax.swing.JSpinner FechaFinal;
@@ -246,6 +225,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
     private javax.swing.JTextField MontoPagadoIN;
     private javax.swing.JComboBox<String> TipoDeServicio;
     private javax.swing.JLabel TituloVentana;
+    private javax.swing.JButton bCancelar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

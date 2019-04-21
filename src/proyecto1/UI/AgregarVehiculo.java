@@ -28,14 +28,16 @@ import proyecto1.Vehiculo;
  * @author Patrixito
  */
 public class AgregarVehiculo extends javax.swing.JFrame {
+    
+    Controlador controlador;
 
     /**
      * Creates new form AgregarVehiculo
      */
-    public AgregarVehiculo() {
+    public AgregarVehiculo(Controlador controlador) {
         initComponents();
         inicializarElementos();
-        new Controlador();
+        this.controlador = controlador;
         //System.out.println("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
         
     }   
@@ -81,8 +83,8 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         lImagen = new javax.swing.JLabel();
-        bAceptarAgregarVehiculo = new javax.swing.JButton();
-        bCancelarAgregarVehiculo = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
+        bAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         tPlaca = new javax.swing.JTextField();
@@ -203,19 +205,19 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         lImagen.setMinimumSize(new java.awt.Dimension(100, 100));
         lImagen.setPreferredSize(new java.awt.Dimension(450, 280));
 
-        bAceptarAgregarVehiculo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        bAceptarAgregarVehiculo.setText("Aceptar");
-        bAceptarAgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        bCancelar.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAceptarAgregarVehiculoActionPerformed(evt);
+                bCancelarActionPerformed(evt);
             }
         });
 
-        bCancelarAgregarVehiculo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        bCancelarAgregarVehiculo.setText("Cancelar");
-        bCancelarAgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        bAceptar.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCancelarAgregarVehiculoActionPerformed(evt);
+                bAceptarActionPerformed(evt);
             }
         });
 
@@ -305,9 +307,9 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                                 .addComponent(jButton3))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bCancelarAgregarVehiculo)
+                        .addComponent(bAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bAceptarAgregarVehiculo)))
+                        .addComponent(bCancelar)))
                 .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
@@ -389,8 +391,8 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                     .addComponent(jSeparator3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAceptarAgregarVehiculo)
-                    .addComponent(bCancelarAgregarVehiculo))
+                    .addComponent(bCancelar)
+                    .addComponent(bAceptar))
                 .addGap(25, 25, 25))
         );
 
@@ -441,10 +443,10 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cEstiloActionPerformed
 
-    private void bAceptarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAgregarVehiculoActionPerformed
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         //new Vehiculo(EEstado.Activo, false, tPlaca.getText(), tAnho.getText(), EEstilo.Compacto, cColor.getSelectedItem().toString(), tMarca.getText(), (int) cPasajeros.getSelectedItem().toString(), (float) tKilometro.getText(), int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas);
         //(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas)
-       Vehiculo v =  new Vehiculo(EEstado.Activo,
+       /*Vehiculo v =  new Vehiculo(EEstado.Activo,
                false,
                tPlaca.getText(),
                Integer.parseInt(tAnho.getText()),
@@ -463,12 +465,14 @@ public class AgregarVehiculo extends javax.swing.JFrame {
 //               (ETransmision)cTransmision.getSelectedItem(),
                null,
                null,
-               null);
-    }//GEN-LAST:event_bAceptarAgregarVehiculoActionPerformed
+               null);*/
+       new PantallaPrincipal(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bCancelarActionPerformed
 
-    private void bCancelarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAgregarVehiculoActionPerformed
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bCancelarAgregarVehiculoActionPerformed
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     private void tVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tVINActionPerformed
         // TODO add your handling code here:
@@ -493,45 +497,10 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     {    
         cEstilo.setModel(new DefaultComboBoxModel(EEstilo.values()));
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgregarVehiculo().setVisible(true);
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAceptarAgregarVehiculo;
-    private javax.swing.JButton bCancelarAgregarVehiculo;
+    private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bCancelar;
     private javax.swing.JComboBox<String> cColor;
     private javax.swing.JComboBox<String> cEstilo;
     private javax.swing.JComboBox<String> cPasajeros;
