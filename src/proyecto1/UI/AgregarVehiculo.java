@@ -17,7 +17,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import proyecto1.Controlador;
-import proyecto1.ETipoLicencia;
+import proyecto1.EEstado;
+import proyecto1.EEstilo;
+import proyecto1.ESede;
+import proyecto1.ETransmision;
+import proyecto1.Vehiculo;
 
 /**
  *
@@ -34,11 +38,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         new Controlador();
         //System.out.println("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
         
-    }
-    
-     public static String[] getNames(Class<? extends Enum<?>> e) {
-        return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
-    }
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -443,6 +443,27 @@ public class AgregarVehiculo extends javax.swing.JFrame {
 
     private void bAceptarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAgregarVehiculoActionPerformed
         //new Vehiculo(EEstado.Activo, false, tPlaca.getText(), tAnho.getText(), EEstilo.Compacto, cColor.getSelectedItem().toString(), tMarca.getText(), (int) cPasajeros.getSelectedItem().toString(), (float) tKilometro.getText(), int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas);
+        //(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas)
+       Vehiculo v =  new Vehiculo(EEstado.Activo,
+               false,
+               tPlaca.getText(),
+               Integer.parseInt(tAnho.getText()),
+               (EEstilo)cEstilo.getSelectedItem(),
+               (String)cColor.getSelectedItem(),
+               tMarca.getText(),
+               Integer.parseInt((String)cPasajeros.getSelectedItem()),
+               Float.parseFloat(tKilometro.getText()),
+               Integer.parseInt((String)cPuertas.getSelectedItem()),
+               tVIN.getText(),
+               Integer.parseInt(tMPG.getText()),
+               null,
+//               (ESede)cSede.getSelectedItem(),
+               Float.parseFloat(tCostoXDia.getText()),
+               Integer.parseInt(tMaletero.getText()),
+//               (ETransmision)cTransmision.getSelectedItem(),
+               null,
+               null,
+               null);
     }//GEN-LAST:event_bAceptarAgregarVehiculoActionPerformed
 
     private void bCancelarAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAgregarVehiculoActionPerformed
@@ -470,8 +491,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     
     public void inicializarElementos()
     {    
-        cEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(ETipoLicencia.toStringArray()));
-
+        cEstilo.setModel(new DefaultComboBoxModel(EEstilo.values()));
     }
     /**
      * @param args the command line arguments

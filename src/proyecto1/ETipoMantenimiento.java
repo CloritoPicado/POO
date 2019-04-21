@@ -5,7 +5,7 @@
  */
 package proyecto1;
 
-import java.io.Serializable;
+
 
 /**
  *
