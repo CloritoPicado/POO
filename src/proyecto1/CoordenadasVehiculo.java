@@ -11,32 +11,32 @@ package proyecto1;
  */
 public class CoordenadasVehiculo {
     
-    float latitud;
-    float longitud;
+    int latitud;
+    int longitud;
     String nombreCoordenada;
 
     public CoordenadasVehiculo() {
     }
 
-    public CoordenadasVehiculo(float latitud, float longitud, String nombreCoordenada) {
+    public CoordenadasVehiculo(int latitud, int longitud, String nombreCoordenada) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombreCoordenada = nombreCoordenada;
     }
 
-    public float getLatitud() {
+    public int getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(float latitud) {
+    public void setLatitud(int latitud) {
         this.latitud = latitud;
     }
 
-    public float getLongitud() {
+    public int getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(float longitud) {
+    public void setLongitud(int longitud) {
         this.longitud = longitud;
     }
 
