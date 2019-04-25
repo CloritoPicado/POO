@@ -55,7 +55,8 @@ public class Controlador {
         listaClientes.setClientes(clientes);
         
         serializador(listaClientes,"clientes.json");
-        //deserealizarVehiculo();
+        deserealizarVehiculo();
+        System.out.println(listaVehiculos.getlVehiculos().get(0).getAnho());
         //deserealizarUbicacion();
 
     }
@@ -83,7 +84,7 @@ public class Controlador {
             new FileReader("src/Argonautas/vehiculos.json"));
 
         //convert the json string back to object
-        listaVehiculos = gson.fromJson(br, ListaVehiculos.class);;
+        listaVehiculos = gson.fromJson(br, ListaVehiculos.class);
 
 
     } catch (IOException e) {

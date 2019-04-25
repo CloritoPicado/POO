@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package correojava;
+package proyecto1.UI;
 
 import javax.swing.JOptionPane;
+import proyecto1.ControladorCorreo;
+import proyecto1.Correo;
 
 /**
  *
