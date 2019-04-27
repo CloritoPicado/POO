@@ -31,6 +31,7 @@ class MyCanvas extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         Image img1 = Toolkit.getDefaultToolkit().getImage("Imagenes/MapaCostaRica/mapaCR.png");
         g2.drawImage(img1, 0, 0, this);
+        g2.finalize();
         int x1 = coordenadas.get(0).getLatitud();
         int y1 = coordenadas.get(0).getLongitud();
         for (int i = 1; i < coordenadas.size()+1; i++){
