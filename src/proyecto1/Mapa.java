@@ -55,7 +55,7 @@ public class Mapa {
         window.setBounds(30, 30, 1049, 816);
         window.getContentPane().add(new MyCanvas(nuevoCoordenadas));
         window.setVisible(true);
-    
+        
     
     
     
