@@ -19,7 +19,7 @@ public class Cliente extends Persona{
         
     }
 
-    public Cliente(Direccion direccion, int telefono, Licencia licencia, String nombre, String correo, int identificacion) {
+    public Cliente(Direccion direccion, int telefono, Licencia licencia, String nombre, String correo, String identificacion) {
         super(nombre, correo,identificacion);
         this.direccion = direccion;
         this.telefono = telefono;

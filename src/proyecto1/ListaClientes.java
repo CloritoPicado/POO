@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class ListaClientes {
     
-    List<Cliente> clientes;
+    List<Cliente> clientes = new ArrayList<>();
 
     public ListaClientes() {
     }

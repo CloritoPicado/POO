@@ -12,14 +12,14 @@ package proyecto1;
 public class EmpresaMantenimiento {
     
     String razonSocial;
-    double cedulaJuridica;
+    String cedulaJuridica;
     int telefono;
     Direccion direccion;
 
     public EmpresaMantenimiento() {
     }
 
-    public EmpresaMantenimiento(String razonSocial, double cedulaJuridica, int telefono, Direccion direccion) {
+    public EmpresaMantenimiento(String razonSocial, String cedulaJuridica, int telefono, Direccion direccion) {
         this.razonSocial = razonSocial;
         this.cedulaJuridica = cedulaJuridica;
         this.telefono = telefono;
@@ -34,11 +34,11 @@ public class EmpresaMantenimiento {
         this.razonSocial = razonSocial;
     }
 
-    public double getCedulaJuridica() {
+    public String getCedulaJuridica() {
         return cedulaJuridica;
     }
 
-    public void setCedulaJuridica(double cedulaJuridica) {
+    public void setCedulaJuridica(String cedulaJuridica) {
         this.cedulaJuridica = cedulaJuridica;
     }
 

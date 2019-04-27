@@ -5,7 +5,14 @@
  */
 package proyecto1.UI;
 
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyecto1.Controlador;
+import proyecto1.ListaOperadores;
+import proyecto1.Operador;
+import proyecto1.RegEx;
+import proyecto1.TripleDES;
 
 /**
  *
@@ -14,12 +21,15 @@ import proyecto1.Controlador;
 public class AgregarOperador extends javax.swing.JFrame {
     
     Controlador controlador;
+    RegEx regEx;
 
     /**
      * Creates new form AgregarOperador
+     * @param controlador
      */
     public AgregarOperador(Controlador controlador) {
         this.controlador = controlador;
+        this.regEx = new RegEx();
         initComponents();
     }
 
@@ -37,13 +47,13 @@ public class AgregarOperador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        tNombre = new javax.swing.JTextField();
+        tID = new javax.swing.JTextField();
+        tEmail = new javax.swing.JTextField();
+        tPass = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bAceptar = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1050, 600));
@@ -58,25 +68,30 @@ public class AgregarOperador extends javax.swing.JFrame {
 
         jLabel5.setText("Contraseña");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 25));
+        tNombre.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(200, 25));
+        tID.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(200, 25));
+        tEmail.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(200, 25));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        tPass.setPreferredSize(new java.awt.Dimension(200, 25));
+        tPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                tPassActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Aceptar");
-
-        jButton4.setText("Cancelar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bAceptarActionPerformed(evt);
+            }
+        });
+
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
             }
         });
 
@@ -96,17 +111,17 @@ public class AgregarOperador extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(bAceptar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(bCancelar)
                 .addGap(680, 680, 680))
         );
         layout.setVerticalGroup(
@@ -119,51 +134,98 @@ public class AgregarOperador extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(bAceptar)
+                    .addComponent(bCancelar))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void tPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_tPassActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         new PantallaPrincipal(controlador).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        Operador o = new Operador();
+        if(regEx.chequearNombre(tNombre.getText()))
+        {
+            o.setNombre(tNombre.getText());
+            System.out.println(o.getNombre());
+            
+            if(regEx.chequearID(tID.getText()))
+            {
+                o.setIdentificacion(tID.getText());
+                System.out.println(o.getIdentificacion());
+                
+                if(regEx.chequearCorreo(tEmail.getText()))
+                {
+                    o.setCorreo(tEmail.getText());
+                    System.out.println(o.getCorreo());
+                    
+                    if(regEx.chequearContrasenha(tPass.getPassword()))
+                    {
+                        String pass = new String(tPass.getPassword());
+                        TripleDES tresDes = new TripleDES();
+                        try {
+                            o.setContrasenha(tresDes.encrypt(pass));
+                            System.out.println(Arrays.toString(o.getContrasenha()));
+                            System.out.println(tresDes.decrypt(o.getContrasenha()));
+                            ListaOperadores listaOperadores = controlador.getListaOperador();
+                            listaOperadores.getOperadores().add(o);
+                            controlador.serializador(listaOperadores, "operadores.json");
+                            new PantallaPrincipal(controlador).setVisible(true);
+                            this.setVisible(false);
+                        } catch (Exception ex) {
+                            Logger.getLogger(AgregarOperador.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    else
+                        System.out.println("Error contraseña");
+                }
+                else
+                    System.out.println("Error correo");
+            }
+            else
+                System.out.println("Error identificación");
+        }
+        else
+            System.out.println("Error nombre");        
+    }//GEN-LAST:event_bAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField tEmail;
+    private javax.swing.JTextField tID;
+    private javax.swing.JTextField tNombre;
+    private javax.swing.JPasswordField tPass;
     // End of variables declaration//GEN-END:variables
 }

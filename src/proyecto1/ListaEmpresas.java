@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Patrixito
  */
 public class ListaEmpresas {
-    List<EmpresaMantenimiento> empresas;
+    List<EmpresaMantenimiento> empresas = new ArrayList<>();
 
     public ListaEmpresas() {
     }

@@ -11,26 +11,56 @@ package proyecto1;
  */
 public class Operador extends Persona{
     
-    String contrasenha; 
+    byte[] contrasenha; 
 
     public Operador() {
     }
 
-    public Operador(String contrasenha, String nombre, String correo, int identificacion) {
+    public Operador(byte[] contrasenha, String nombre, String correo, String identificacion) {
         super(nombre, correo,identificacion);
         this.contrasenha = contrasenha;
     }
 
-    public Operador(String contrasenha) {
+    public Operador(byte[] contrasenha) {
         this.contrasenha = contrasenha;
     }
 
-    public String getContrasenha() {
+    public byte[] getContrasenha() {
         return contrasenha;
     }
 
-    public void setContrasenha(String contrasenha) {
+    public void setContrasenha(byte[] contrasenha) {
         this.contrasenha = contrasenha;
+    }
+
+    @Override
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    @Override
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String getCorreo() {
+        return correo;
+    }
+
+    @Override
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
         
     

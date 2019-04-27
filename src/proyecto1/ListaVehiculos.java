@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,22 +13,22 @@ import java.util.List;
  * @author Patrixito
  */
 public class ListaVehiculos {
-    List<Vehiculo> Vehiculos;
+    List<Vehiculo> vehiculos = new ArrayList<>();
 
     public ListaVehiculos() {
-    }
         
+    }        
 
     public ListaVehiculos(List<Vehiculo> lVehiculos) {
-        this.Vehiculos = lVehiculos;
+        this.vehiculos = lVehiculos;
     }
 
     public List<Vehiculo> getlVehiculos() {
-        return Vehiculos;
+        return vehiculos;
     }
 
     public void setlVehiculos(List<Vehiculo> lVehiculos) {
-        this.Vehiculos = lVehiculos;
+        this.vehiculos = lVehiculos;
     }
     
     

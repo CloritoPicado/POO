@@ -39,6 +39,31 @@ public class Canton {
         this.distritos = distritos;
     }
     
+    public String[] listaDistritos()
+    {
+        String[] resultado = new String[distritos.size()];
+        int contador = 0;
+        for (Distrito d : distritos) 
+        { 
+            resultado[contador] = d.getTitle();
+            contador++;
+        }
+        
+        return resultado;
+    }
+    
+    public Distrito buscarCanton(String s)
+    {
+        for(int a = 0; a < distritos.size(); a++)
+        {
+            if(distritos.get(a).getTitle().equals(s))
+            {
+                return distritos.get(a);
+            }
+        }
+        
+        return null;
+    }
     
     
     

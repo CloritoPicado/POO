@@ -23,12 +23,17 @@ public class Controlador {
     
     ListaVehiculos listaVehiculos = new ListaVehiculos();
     ListaReservas listaReservas = new ListaReservas();
-    ListaOperadores listaOperador = new ListaOperadores();
+    ListaOperadores listaOperadores = new ListaOperadores();
     ListaEmpresas listaEmpresas = new ListaEmpresas();
     ListaClientes listaClientes = new ListaClientes();
     Ubicacion ubicacion = new Ubicacion();
 
     public Controlador(){
+        
+        deserealizarUbicacion();
+        deserealizarVehiculo();
+        deserealizarOperador();
+        //System.out.println(listaVehiculos.getlVehiculos().get(0).getCapacidad());
        
         /*Vehiculo v = new Vehiculo(EEstado.Activo, true, "BBB111", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
         Vehiculo v2 = new Vehiculo(EEstado.Activo, true, "BBB112", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
@@ -36,9 +41,12 @@ public class Controlador {
         lista.add(v);
         lista.add(v2);
         ListaVehiculos lVehiculos = new ListaVehiculos(lista);
-        serializador(lVehiculos, "vehiculos.json");
-        */
+        serializador(lVehiculos, "vehiculos.json");*/
         
+        //System.out.println(ubicacion.getProvincias().get(0).getTitle());
+        
+        
+        /*
         LocalDate date = LocalDate.of(2019, Month.APRIL, 22);
         LocalDate date2 = LocalDate.of(2024, Month.APRIL, 22);
         
@@ -49,15 +57,16 @@ public class Controlador {
         //(String provincia, String canton, String distrito, String senhas)
         Direccion d = new Direccion("San José", "San José", "Uruca", "100 norte del palo de mango");
         
-        Cliente c = new Cliente(d,22223333,l,"Mario Mario","mario@nintendo.com", 112340123);
+        Cliente c = new Cliente(d,22223333,l,"Mario Mario","mario@nintendo.com", "11234012");
         List<Cliente> clientes = new ArrayList<>();
         clientes.add(c);
         listaClientes.setClientes(clientes);
         
         serializador(listaClientes,"clientes.json");
-        deserealizarVehiculo();
-        System.out.println(listaVehiculos.getlVehiculos().get(0).getAnho());
+        
+        
         //deserealizarUbicacion();
+    */
 
     }
     
@@ -68,7 +77,8 @@ public class Controlador {
         try (Writer writer = new FileWriter("src/Argonautas/"+archivo)) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(o, writer);
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -81,15 +91,29 @@ public class Controlador {
     try {
 
         BufferedReader br = new BufferedReader(
-            new FileReader("src/Argonautas/vehiculos.json"));
-
-        //convert the json string back to object
+        new FileReader("src/Argonautas/vehiculos.json"));
         listaVehiculos = gson.fromJson(br, ListaVehiculos.class);
+        } 
+        catch (IOException e) {
+            System.out.println(e);
+        }
 
-
-    } catch (IOException e) {
-        e.printStackTrace();
     }
+    
+    //Genera la lista de vehículos a partir del json de vehículos
+    public void deserealizarOperador()
+    {
+        Gson gson = new Gson();
+
+    try {
+
+        BufferedReader br = new BufferedReader(
+        new FileReader("src/Argonautas/operadores.json"));
+        listaOperadores = gson.fromJson(br, ListaOperadores.class);
+        } 
+        catch (IOException e) {
+            System.out.println(e);
+        }
 
     }
     
@@ -101,16 +125,63 @@ public class Controlador {
     try {
 
         BufferedReader br = new BufferedReader(
-            new FileReader("src/Argonautas/Distritos.json"));
-
-        //convert the json string back to object
+        new FileReader("src/Argonautas/Distritos.json"));
         ubicacion = gson.fromJson(br, Ubicacion.class);
+        } 
+        catch (IOException e) {
+            System.out.println(e);
+        }
 
-
-    } catch (IOException e) {
-        e.printStackTrace();
     }
 
+    public ListaVehiculos getListaVehiculos() {
+        return listaVehiculos;
     }
+
+    public void setListaVehiculos(ListaVehiculos listaVehiculos) {
+        this.listaVehiculos = listaVehiculos;
+    }
+
+    public ListaReservas getListaReservas() {
+        return listaReservas;
+    }
+
+    public void setListaReservas(ListaReservas listaReservas) {
+        this.listaReservas = listaReservas;
+    }
+
+    public ListaOperadores getListaOperador() {
+        return listaOperadores;
+    }
+
+    public void setListaOperador(ListaOperadores listaOperador) {
+        this.listaOperadores = listaOperador;
+    }
+
+    public ListaEmpresas getListaEmpresas() {
+        return listaEmpresas;
+    }
+
+    public void setListaEmpresas(ListaEmpresas listaEmpresas) {
+        this.listaEmpresas = listaEmpresas;
+    }
+
+    public ListaClientes getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(ListaClientes listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+    
+    
     
 }

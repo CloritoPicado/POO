@@ -13,7 +13,7 @@ public class Direccion {
     
     String provincia;
     String canton;
-    String distrito;
+    String distrito = "";
     String senhas;
 
     public Direccion() {

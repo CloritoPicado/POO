@@ -91,6 +91,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         bVehiculo.setText("Agregar vehículo");
         bVehiculo.setPreferredSize(new java.awt.Dimension(200, 100));
+        bVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVehiculoActionPerformed(evt);
+            }
+        });
 
         bEditarVehiculo.setText("Editar vehículo");
         bEditarVehiculo.setPreferredSize(new java.awt.Dimension(200, 100));
@@ -214,7 +219,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
+                                .addGap(50, 50, 50)
                                 .addComponent(bOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +231,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
+                                .addGap(50, 50, 50)
                                 .addComponent(bVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bEditarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,14 +243,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
+                                .addGap(50, 50, 50)
                                 .addComponent(bNuevaReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bConsultarReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                        .addGap(50, 50, 50)
                         .addComponent(bAgregarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bVisualizarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -290,6 +295,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         new AgregarOperador(controlador).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bOperadorActionPerformed
+
+    private void bVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVehiculoActionPerformed
+        new AgregarVehiculo(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bVehiculoActionPerformed
 
 
 

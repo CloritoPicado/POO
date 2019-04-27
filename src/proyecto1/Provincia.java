@@ -40,6 +40,31 @@ public class Provincia {
         this.cantones = cantones;
     }
     
+    public String[] listaCantones()
+    {
+        String[] resultado = new String[cantones.size()];
+        int contador = 0;
+        for (Canton c : cantones) 
+        { 
+            resultado[contador] = c.getTitle();
+            contador++;
+        }
+        
+        return resultado;
+    }
+    
+    public Canton buscarCanton(String s)
+    {
+        for(int a = 0; a < cantones.size(); a++)
+        {
+            if(cantones.get(a).getTitle().equals(s))
+            {
+                return cantones.get(a);
+            }
+        }
+        
+        return null;
+    }
     
     
     

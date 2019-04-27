@@ -1,0 +1,11 @@
+{
+    "razonSocial": "Howler Monkey Studios",
+    "cedulaJuridica": "3101770979",
+    "telefono": 88849561,
+    "direccion": {
+        "provincia": "San José",
+        "canton": "San José",
+        "distrito": "Pavas",
+        "senhas": "Del palo de mango 100 varas pa dentro"
+    }
+}

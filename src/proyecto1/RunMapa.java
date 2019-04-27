@@ -1,6 +1,6 @@
 package proyecto1;
 
-import com.teamdev.jxbrowser.chromium.Browser;
+/*import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 
 import javax.swing.*;
@@ -18,6 +18,6 @@ public class RunMapa {
        frame.setLocationRelativeTo(null);
        frame.setVisible(true);
 
-       browser.loadURL("C:\\Users\\Francisco\\Documents\\POO\\Proyecto1\\POO-master (1)\\POO-master\\src\\proyecto1\\Map.html");
+       browser.loadURL("\\POO-master\\src\\proyecto1\\Map.html");
    }
-}
+}*/

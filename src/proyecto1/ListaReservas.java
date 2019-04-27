@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Patrixito
  */
 public class ListaReservas {
-    List<Reserva> reservas;
+    List<Reserva> reservas = new ArrayList<>();
 
     public ListaReservas() {
     }

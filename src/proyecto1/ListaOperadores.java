@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class ListaOperadores {
     
-    List<Operador> operadores;
+    List<Operador> operadores = new ArrayList<>();
 
     public ListaOperadores() {
     }
@@ -30,7 +31,18 @@ public class ListaOperadores {
         this.operadores = operadores;
     }
     
-    
+    public Operador buscarOperador(String correo)
+    {
+        for(int a = 0; a < operadores.size(); a++)
+        {
+            if(operadores.get(a).getCorreo().equals(correo))
+            {
+                return operadores.get(a);
+            }
+        }
+          
+        return null;
+    }
     
     
     
