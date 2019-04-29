@@ -33,7 +33,9 @@ public class Controlador {
         deserealizarUbicacion();
         deserealizarVehiculo();
         deserealizarOperador();
-        //System.out.println(listaVehiculos.getlVehiculos().get(0).getCapacidad());
+        deserealizarClientes();  
+        deserealizarEmpresas();
+        System.out.println(listaEmpresas.getEmpresas());
        
         /*Vehiculo v = new Vehiculo(EEstado.Activo, true, "BBB111", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
         Vehiculo v2 = new Vehiculo(EEstado.Activo, true, "BBB112", 2006, EEstilo.Compacto, "azul", "Hyundai", 5, 33000.0f, 4, "A1B2C3D4", 32, ESede.Alajuela, 2300.0f, 3, ETransmision.Automatica, null, null);
@@ -110,6 +112,40 @@ public class Controlador {
         BufferedReader br = new BufferedReader(
         new FileReader("src/Argonautas/operadores.json"));
         listaOperadores = gson.fromJson(br, ListaOperadores.class);
+        } 
+        catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+    
+    //Genera la lista de clientes a partir del json de clientes
+    public void deserealizarClientes()
+    {
+        Gson gson = new Gson();
+
+    try {
+
+        BufferedReader br = new BufferedReader(
+        new FileReader("src/Argonautas/clientes.json"));
+        listaClientes = gson.fromJson(br, ListaClientes.class);
+        } 
+        catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+     //Genera la lista de empresas a partir del json de empresas
+    public void deserealizarEmpresas()
+    {
+        Gson gson = new Gson();
+
+    try {
+
+        BufferedReader br = new BufferedReader(
+        new FileReader("src/Argonautas/empresas.json"));
+        listaEmpresas = gson.fromJson(br, ListaEmpresas.class);
+        //listaEmpresas.getEmpresas().get(0).getCedulaJuridica();
         } 
         catch (IOException e) {
             System.out.println(e);

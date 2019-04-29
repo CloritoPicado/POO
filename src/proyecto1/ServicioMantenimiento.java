@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -15,17 +16,16 @@ public class ServicioMantenimiento {
     
     int identificador;
     ETipoMantenimiento tipo;
-    Date fechaInicio;
-    Date fechaFinal; 
+    LocalDate fechaInicio;
+    LocalDate fechaFinal; 
     float montoPagado;
     String detalle;
-    EmpresaMantenimiento empresa;
-    Vehiculo vehiculo;
+    String empresa;
 
     public ServicioMantenimiento() {
     }
 
-    public ServicioMantenimiento(int identificador, ETipoMantenimiento tipo, Date fechaInicio, Date fechaFinal, float montoPagado, String detalle, EmpresaMantenimiento empresa, Vehiculo vehiculo) {
+    public ServicioMantenimiento(int identificador, ETipoMantenimiento tipo, LocalDate fechaInicio, LocalDate fechaFinal, float montoPagado, String detalle, String empresa) {
         this.identificador = identificador;
         this.tipo = tipo;
         this.fechaInicio = fechaInicio;
@@ -33,7 +33,6 @@ public class ServicioMantenimiento {
         this.montoPagado = montoPagado;
         this.detalle = detalle;
         this.empresa = empresa;
-        this.vehiculo = vehiculo;
     }
 
     public int getIdentificador() {
@@ -52,19 +51,19 @@ public class ServicioMantenimiento {
         this.tipo = tipo;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFinal() {
+    public LocalDate getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
@@ -84,20 +83,12 @@ public class ServicioMantenimiento {
         this.detalle = detalle;
     }
 
-    public EmpresaMantenimiento getEmpresa() {
+    public String getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(EmpresaMantenimiento empresa) {
+    public void setEmpresa(String empresa) {
         this.empresa = empresa;
-    }
-
-    public Vehiculo getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
     }
     
     

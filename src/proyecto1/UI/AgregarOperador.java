@@ -175,36 +175,42 @@ public class AgregarOperador extends javax.swing.JFrame {
             
             if(regEx.chequearID(tID.getText()))
             {
-                o.setIdentificacion(tID.getText());
-                System.out.println(o.getIdentificacion());
-                
-                if(regEx.chequearCorreo(tEmail.getText()))
+                if(!controlador.getListaOperador().isRepetido(tID.getText()))
                 {
-                    o.setCorreo(tEmail.getText());
-                    System.out.println(o.getCorreo());
-                    
-                    if(regEx.chequearContrasenha(tPass.getPassword()))
+                     o.setIdentificacion(tID.getText());
+                    System.out.println(o.getIdentificacion());
+                
+                    if(regEx.chequearCorreo(tEmail.getText()))
                     {
-                        String pass = new String(tPass.getPassword());
-                        TripleDES tresDes = new TripleDES();
-                        try {
-                            o.setContrasenha(tresDes.encrypt(pass));
-                            System.out.println(Arrays.toString(o.getContrasenha()));
-                            System.out.println(tresDes.decrypt(o.getContrasenha()));
-                            ListaOperadores listaOperadores = controlador.getListaOperador();
-                            listaOperadores.getOperadores().add(o);
-                            controlador.serializador(listaOperadores, "operadores.json");
-                            new PantallaPrincipal(controlador).setVisible(true);
-                            this.setVisible(false);
-                        } catch (Exception ex) {
-                            Logger.getLogger(AgregarOperador.class.getName()).log(Level.SEVERE, null, ex);
+                        o.setCorreo(tEmail.getText());
+                        System.out.println(o.getCorreo());
+                    
+                        if(regEx.chequearContrasenha(tPass.getPassword()))
+                        {
+                            String pass = new String(tPass.getPassword());
+                            TripleDES tresDes = new TripleDES();
+                            try {
+                                o.setContrasenha(tresDes.encrypt(pass));
+                                System.out.println(Arrays.toString(o.getContrasenha()));
+                                System.out.println(tresDes.decrypt(o.getContrasenha()));
+                                ListaOperadores listaOperadores = controlador.getListaOperador();
+                                listaOperadores.getOperadores().add(o);
+                                controlador.serializador(listaOperadores, "operadores.json");
+                                new PantallaPrincipal(controlador).setVisible(true);
+                                this.setVisible(false);
+                            } catch (Exception ex) {
+                                Logger.getLogger(AgregarOperador.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
+                        else
+                            System.out.println("Error contraseña");                               
+               
                     }
                     else
-                        System.out.println("Error contraseña");
+                        System.out.println("Error correo");
                 }
                 else
-                    System.out.println("Error correo");
+                    System.out.println("Error ID repetido"); 
             }
             else
                 System.out.println("Error identificación");

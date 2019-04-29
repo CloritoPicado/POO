@@ -29,17 +29,20 @@ import proyecto1.Vehiculo;
  *
  * @author Patrixito
  */
-public class AgregarVehiculo extends javax.swing.JFrame {
+public class EditarVehiculo extends javax.swing.JFrame {
     String foto = "";
     Controlador controlador;
 
     /**
      * Creates new form AgregarVehiculo
+     * @param controlador
      */
-    public AgregarVehiculo(Controlador controlador) {
+    public EditarVehiculo(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
-        inicializarElementos();
+        inicializarElementos();        
+        //System.out.println("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
+        
     }   
 
     /**
@@ -59,7 +62,6 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        tVIN = new javax.swing.JTextField();
         tAnho = new javax.swing.JTextField();
         tMarca = new javax.swing.JTextField();
         tKilometro = new javax.swing.JTextField();
@@ -85,16 +87,17 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         lImagen = new javax.swing.JLabel();
         bCancelar = new javax.swing.JButton();
         bAceptar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bBrowse = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         tPlaca = new javax.swing.JTextField();
+        cVINs = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(1050, 600));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setText("Agregar Vehículo");
+        jLabel1.setText("Editar Vehículo");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jLabel2.setText("VIN");
@@ -113,14 +116,6 @@ public class AgregarVehiculo extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jLabel7.setText("Costo por día");
-
-        tVIN.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        tVIN.setPreferredSize(new java.awt.Dimension(150, 30));
-        tVIN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tVINActionPerformed(evt);
-            }
-        });
 
         tAnho.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
 
@@ -222,11 +217,11 @@ public class AgregarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jButton3.setText("Browse...");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bBrowse.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        bBrowse.setText("Browse...");
+        bBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bBrowseActionPerformed(evt);
             }
         });
 
@@ -234,6 +229,27 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         jLabel16.setText("Placa");
 
         tPlaca.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        cVINs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cVINs.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cVINsPopupMenuWillBecomeVisible(evt);
+            }
+        });
+        cVINs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cVINsMouseClicked(evt);
+            }
+        });
+        cVINs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cVINsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,15 +272,14 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tCostoXDia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tMPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tKilometro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tAnho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tVIN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tCostoXDia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tMPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tKilometro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tAnho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cVINs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -305,7 +320,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                             .addComponent(lImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton3))))
+                                .addComponent(bBrowse))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bAceptar)
@@ -329,13 +344,14 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(lImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
+                                .addComponent(bBrowse))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, 0)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel2)
-                                            .addComponent(tVIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cVINs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel3)
@@ -390,7 +406,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                             .addComponent(tPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator2)
                     .addComponent(jSeparator3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancelar)
                     .addComponent(bAceptar))
@@ -408,7 +424,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cPasajerosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBrowseActionPerformed
         //lImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/Imagenes/Vehiculos/fortunerToyota.png")));
         
         
@@ -426,7 +442,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                 imagen = ImageIO.read(selectedFile);
                 
             } catch (IOException ex) {
-                Logger.getLogger(AgregarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EditarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             try
@@ -439,27 +455,46 @@ public class AgregarVehiculo extends javax.swing.JFrame {
             }
                 
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bBrowseActionPerformed
 
     private void cEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cEstiloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cEstiloActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-
+        //new Vehiculo(EEstado.Activo, false, tPlaca.getText(), tAnho.getText(), EEstilo.Compacto, cColor.getSelectedItem().toString(), tMarca.getText(), (int) cPasajeros.getSelectedItem().toString(), (float) tKilometro.getText(), int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas);
+        //(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas)
+       /*Vehiculo v =  new Vehiculo(EEstado.Activo,
+               false,
+               tPlaca.getText(),
+               Integer.parseInt(tAnho.getText()),
+               (EEstilo)cEstilo.getSelectedItem(),
+               (String)cColor.getSelectedItem(),
+               tMarca.getText(),
+               Integer.parseInt((String)cPasajeros.getSelectedItem()),
+               Float.parseFloat(tKilometro.getText()),
+               Integer.parseInt((String)cPuertas.getSelectedItem()),
+               tVIN.getText(),
+               Integer.parseInt(tMPG.getText()),
+               null,
+//               (ESede)cSede.getSelectedItem(),
+               Float.parseFloat(tCostoXDia.getText()),
+               Integer.parseInt(tMaletero.getText()),
+//               (ETransmision)cTransmision.getSelectedItem(),
+               null,
+               null,
+               null);*/
        new PantallaPrincipal(controlador).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        Vehiculo vehiculo = new Vehiculo();
+        /*Vehiculo vehiculo = new Vehiculo();
         RegEx regEx = new RegEx();
         if(regEx.chequearID(tVIN.getText()))
         {
             vehiculo.setNumVim(tVIN.getText());
-            if(!controlador.getListaVehiculos().isRepetidoVIN(tVIN.getText()))
-            {
-                
+            
             if(regEx.chequearAnho(tAnho.getText()))
             {
                 vehiculo.setAnho(Integer.parseInt(tAnho.getText()));
@@ -486,31 +521,26 @@ public class AgregarVehiculo extends javax.swing.JFrame {
                                     
                                     if(regEx.chequearPlaca(tPlaca.getText()))
                                     {
-                                        if(!controlador.getListaVehiculos().isRepetidaPlaca(tPlaca.getText()))
-                                        {
-                                               vehiculo.setPlaca(tPlaca.getText());
+                                        vehiculo.setPlaca(tPlaca.getText());
                                         
-                                            if(!foto.equals(""))
-                                            {
-                                                vehiculo.setEstilo((EEstilo) cEstilo.getSelectedItem());
-                                                vehiculo.setColor((String) cColor.getSelectedItem());
-                                                vehiculo.setCapacidad(Integer.parseInt((String)cPasajeros.getSelectedItem()));
-                                                vehiculo.setNumPuertas(Integer.parseInt((String)cPuertas.getSelectedItem()));
-                                                vehiculo.setTransmision((ETransmision) cTransmision.getSelectedItem());
-                                                vehiculo.setSedePertenencia((ESede) cSede.getSelectedItem());
-                                                vehiculo.setImagen(foto);
-                                                ListaVehiculos listaVehiculos = controlador.getListaVehiculos();
-                                                listaVehiculos.getlVehiculos().add(vehiculo);
-                                                controlador.serializador(listaVehiculos, "vehiculos.json");
-                                                foto = "";
-                                                new PantallaPrincipal(controlador).setVisible(true);
-                                                this.setVisible(false);
-                                            }
-                                            else
-                                                System.out.println("Error foto");
+                                        if(!foto.equals(""))
+                                        {
+                                            vehiculo.setEstilo((EEstilo) cEstilo.getSelectedItem());
+                                            vehiculo.setColor((String) cColor.getSelectedItem());
+                                            vehiculo.setCapacidad(Integer.parseInt((String)cPasajeros.getSelectedItem()));
+                                            vehiculo.setNumPuertas(Integer.parseInt((String)cPuertas.getSelectedItem()));
+                                            vehiculo.setTransmision((ETransmision) cTransmision.getSelectedItem());
+                                            vehiculo.setSedePertenencia((ESede) cSede.getSelectedItem());
+                                            vehiculo.setImagen(foto);
+                                            ListaVehiculos listaVehiculos = controlador.getListaVehiculos();
+                                            listaVehiculos.getlVehiculos().add(vehiculo);
+                                            controlador.serializador(listaVehiculos, "vehiculos.json");
+                                            foto = "";
+                                            new PantallaPrincipal(controlador).setVisible(true);
+                                            this.setVisible(false);
                                         }
                                         else
-                                            System.out.println("Error placa repetida");
+                                            System.out.println("Error foto");
                                     }
                                     else
                                         System.out.println("Error placa");
@@ -532,17 +562,39 @@ public class AgregarVehiculo extends javax.swing.JFrame {
             }
             else
                 System.out.println("Error año");
-            }
-            else
-                System.out.println("Error VIN repetido");
         }
         else
-            System.out.println("Error VIN");
+            System.out.println("Error VIN");*/
     }//GEN-LAST:event_bAceptarActionPerformed
 
-    private void tVINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tVINActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tVINActionPerformed
+    private void cVINsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cVINsActionPerformed
+        
+        Vehiculo v = controlador.getListaVehiculos().getVehiculo((String) cVINs.getSelectedItem());
+        bloquearElementos(false);
+        tAnho.setText(v.getAnho()+"");
+        tMarca.setText(v.getMarca());
+        tKilometro.setText(v.getKilometraje()+"");
+        tMPG.setText(v.getMpg()+"");
+        tCostoXDia.setText(v.getCostoPorDia()+"");
+        tMaletero.setText(v.getCapacidadMaletas()+"");
+        tPlaca.setText(v.getPlaca());
+        cEstilo.setSelectedItem(v.getEstilo());
+        cColor.setSelectedItem(v.getColor());
+        cPasajeros.setSelectedItem(v.getCapacidad());
+        cPuertas.setSelectedItem(v.getNumPuertas());
+        cTransmision.setSelectedItem(v.getTransmision());
+        cSede.setSelectedItem(v.getSedePertenencia());
+        lImagen.setIcon(new ImageIcon("Imagenes/Vehiculos/"+v.getImagen()));
+      
+    }//GEN-LAST:event_cVINsActionPerformed
+
+    private void cVINsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cVINsMouseClicked
+        
+    }//GEN-LAST:event_cVINsMouseClicked
+
+    private void cVINsPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cVINsPopupMenuWillBecomeVisible
+        cVINs.setModel(new DefaultComboBoxModel(controlador.getListaVehiculos().devolverVINs()));        
+    }//GEN-LAST:event_cVINsPopupMenuWillBecomeVisible
 
     private String convertirPath(String s)
     {
@@ -564,10 +616,32 @@ public class AgregarVehiculo extends javax.swing.JFrame {
         cEstilo.setModel(new DefaultComboBoxModel(EEstilo.values()));
         cTransmision.setModel(new DefaultComboBoxModel(ETransmision.values()));
         cSede.setModel(new DefaultComboBoxModel(ESede.values()));
+        bloquearElementos(true);
+        
     }
+    
+    public void bloquearElementos(boolean a)
+    {
+        tAnho.setEnabled(!a);
+        tMarca.setEnabled(!a);
+        tKilometro.setEnabled(!a);
+        tMPG.setEnabled(!a);
+        tCostoXDia.setEnabled(!a);
+        tMaletero.setEnabled(!a);
+        tPlaca.setEnabled(!a);
+        cEstilo.setEnabled(!a);
+        cColor.setEnabled(!a);
+        cPasajeros.setEnabled(!a);
+        cPuertas.setEnabled(!a);
+        cTransmision.setEnabled(!a);
+        cSede.setEnabled(!a);
+        bBrowse.setEnabled(!a);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bBrowse;
     private javax.swing.JButton bCancelar;
     private javax.swing.JComboBox<String> cColor;
     private javax.swing.JComboBox<String> cEstilo;
@@ -575,7 +649,7 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cPuertas;
     private javax.swing.JComboBox<String> cSede;
     private javax.swing.JComboBox<String> cTransmision;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> cVINs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -603,6 +677,5 @@ public class AgregarVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField tMaletero;
     private javax.swing.JTextField tMarca;
     private javax.swing.JTextField tPlaca;
-    private javax.swing.JTextField tVIN;
     // End of variables declaration//GEN-END:variables
 }

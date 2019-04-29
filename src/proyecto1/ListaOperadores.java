@@ -44,6 +44,18 @@ public class ListaOperadores {
         return null;
     }
     
+    public boolean isRepetido(String s)
+    {
+        for (Operador o : operadores) 
+        { 
+            if(o.getIdentificacion().equals(s))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
     
 }

@@ -10,6 +10,7 @@ import proyecto1.Canton;
 import proyecto1.Controlador;
 import proyecto1.Direccion;
 import proyecto1.EmpresaMantenimiento;
+import proyecto1.ListaEmpresas;
 import proyecto1.Provincia;
 import proyecto1.RegEx;
 
@@ -295,10 +296,12 @@ public class AgregarEmpresaMantenimiento extends javax.swing.JFrame {
                     {
                         d.setSenhas(tSenhas.getText());
                         m.setDireccion(d);
-                        controlador.getListaEmpresas().getEmpresas().add(m);
-                        controlador.serializador(m,"empresas.json");
+                        ListaEmpresas listaEmpresas = controlador.getListaEmpresas();
+                        listaEmpresas.getEmpresas().add(m);
+                        controlador.serializador(listaEmpresas,"empresas.json");
                         new PantallaPrincipal(controlador).setVisible(true);
                         this.setVisible(false);
+                        ingresado = false;
                     }
                     else
                        System.out.println("Error dirección");

@@ -1,1 +1,23 @@
-{"clientes":[{"direccion":{"provincia":"San José","canton":"San José","distrito":"Uruca","senhas":"100 norte del palo de mango"},"telefono":22223333,"licencia":{"identificacion":112340123,"fechaEmision":{"year":2019,"month":4,"day":22},"fechaExpiracion":{"year":2024,"month":4,"day":22},"tipo":"B1"},"identificacion":"11234012","nombre":"Mario Mario","correo":"mario@nintendo.com"}]}
+{
+    "clientes": [{
+            "telefono": 22314968,
+            "licencia": {
+                "identificacion": "113460334",
+                "fechaEmision": {
+                    "year": 2019,
+                    "month": 4,
+                    "day": 2
+                },
+                "fechaExpiracion": {
+                    "year": 2022,
+                    "month": 4,
+                    "day": 11
+                },
+                "tipo": "B1",
+                "imagen": "facial-hair-headshot-man-1722198.jpg"
+            },
+            "identificacion": "113460334",
+            "nombre": "Patrick",
+            "correo": "patrick@howlermonkeystudios.com"
+        }]
+}

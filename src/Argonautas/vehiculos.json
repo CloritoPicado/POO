@@ -1,37 +1,38 @@
 {
     "vehiculos": [{
             "estado": "Activo",
-            "rentado": true,
-            "placa": "BBB111",
-            "anho": 2006,
-            "estilo": "Compacto",
-            "color": "azul",
-            "marca": "Hyundai",
-            "capacidad": 5,
-            "kilometraje": 33000.0,
+            "rentado": false,
+            "placa": "CCC111",
+            "anho": 2014,
+            "estilo": "Pickup",
+            "color": "Amarillo",
+            "marca": "Toyota",
+            "capacidad": 3,
+            "kilometraje": 100000.0,
             "numPuertas": 4,
-            "numVim": "A1B2C3D4",
-            "mpg": 32,
-            "sedePertenencia": "Alajuela",
-            "costoPorDia": 2300.0,
-            "capacidadMaletas": 3,
-            "transmision": "Automatica"
-        }, {
-            "estado": "Activo",
-            "rentado": true,
-            "placa": "BBB112",
-            "anho": 2006,
-            "estilo": "Compacto",
-            "color": "azul",
-            "marca": "Hyundai",
-            "capacidad": 5,
-            "kilometraje": 33000.0,
-            "numPuertas": 4,
-            "numVim": "A1B2C3D4",
-            "mpg": 32,
-            "sedePertenencia": "Alajuela",
-            "costoPorDia": 2300.0,
-            "capacidadMaletas": 3,
-            "transmision": "Automatica"
+            "numVim": "1E13214G1",
+            "mpg": 36,
+            "sedePertenencia": "San_José",
+            "costoPorDia": 12500.0,
+            "capacidadMaletas": 100,
+            "transmision": "Manual",
+            "historialServiciosMantenimiento": [{
+                    "identificador": 111111,
+                    "tipo": "Correctivo",
+                    "fechaInicio": {
+                        "year": 2019,
+                        "month": 4,
+                        "day": 3
+                    },
+                    "fechaFinal": {
+                        "year": 2019,
+                        "month": 4,
+                        "day": 4
+                    },
+                    "montoPagado": 125000.0,
+                    "detalle": "Lorem Ipsum",
+                    "empresa": "Howler Monkey Studios"
+                }],
+            "imagen": "corollaToyota.jpg"
         }]
 }

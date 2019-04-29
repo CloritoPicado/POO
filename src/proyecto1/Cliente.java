@@ -55,6 +55,36 @@ public class Cliente extends Persona{
     public void setLicencia(Licencia licencia) {
         this.licencia = licencia;
     }
+
+    @Override
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    @Override
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String getCorreo() {
+        return correo;
+    }
+
+    @Override
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
     
     
 }

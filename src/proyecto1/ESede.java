@@ -11,7 +11,7 @@ package proyecto1;
  * @author Patrixito
  */
 public enum ESede{
-    San_Jose,
+    San_José,
     Cartago,
     Heredia,
     Limon,

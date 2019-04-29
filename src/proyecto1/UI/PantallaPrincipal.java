@@ -99,6 +99,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         bEditarVehiculo.setText("Editar vehículo");
         bEditarVehiculo.setPreferredSize(new java.awt.Dimension(200, 100));
+        bEditarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEditarVehiculoActionPerformed(evt);
+            }
+        });
 
         bNuevaReservacion.setText("Realizar reservación");
         bNuevaReservacion.setPreferredSize(new java.awt.Dimension(200, 100));
@@ -300,6 +305,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         new AgregarVehiculo(controlador).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bVehiculoActionPerformed
+
+    private void bEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarVehiculoActionPerformed
+        new EditarVehiculo(controlador).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bEditarVehiculoActionPerformed
 
 
 

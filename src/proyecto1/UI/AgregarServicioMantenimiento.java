@@ -5,7 +5,15 @@
  */
 package proyecto1.UI;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import proyecto1.Controlador;
+import proyecto1.ETipoMantenimiento;
+import proyecto1.ETipoServicio;
+import proyecto1.RegEx;
+import proyecto1.ServicioMantenimiento;
+import proyecto1.Vehiculo;
 
 /**
  *
@@ -21,6 +29,15 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
     public AgregarServicioMantenimiento(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
+        inicializarElementos();
+        
+    }
+    
+    public void inicializarElementos()
+    {    
+        
+        
+        
     }
 
     /**
@@ -36,23 +53,27 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         TituloVentana = new javax.swing.JLabel();
-        IdentificadorServicioIN = new javax.swing.JTextField();
+        tID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        MontoPagadoIN = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        TipoDeServicio = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        tTotal = new javax.swing.JTextField();
+        cServicio = new javax.swing.JComboBox<>();
         bCancelar = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        EmpresaResponsable = new javax.swing.JComboBox<>();
-        FechaInicial = new javax.swing.JSpinner();
+        bAceptar = new javax.swing.JButton();
+        cEmpresa = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        FechaFinal = new javax.swing.JSpinner();
-        jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        dInicial = new com.github.lgooddatepicker.components.DatePicker();
+        dFinal = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel8 = new javax.swing.JLabel();
+        cVehiculo = new javax.swing.JComboBox<>();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tDetalle = new javax.swing.JTextArea();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -70,6 +91,7 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1050, 600));
         setSize(new java.awt.Dimension(1050, 600));
 
         TituloVentana.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -77,17 +99,23 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
 
         jLabel1.setText("Identificador Servicio");
 
-        MontoPagadoIN.addActionListener(new java.awt.event.ActionListener() {
+        tTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MontoPagadoINActionPerformed(evt);
+                tTotalActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Monto Pagado");
-
-        TipoDeServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Preventivo", "Correctivo" }));
-
-        jLabel5.setText("Tipo de Servicio");
+        cServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cServicio.setToolTipText("");
+        cServicio.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cServicioPopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,21 +124,54 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
             }
         });
 
-        Cancelar.setText("Aceptar");
+        bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Empresa Responsable");
-
-        EmpresaResponsable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa 1", "Empresa 1", "Empresa 1" }));
-
-        FechaInicial.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1555038960000L), new java.util.Date(1546369140000L), null, java.util.Calendar.ERA));
+        cEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cEmpresa.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cEmpresaPopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         jLabel2.setText("Fecha Inicial");
 
         jLabel6.setText("Fecha Final");
 
-        FechaFinal.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1555038960000L), new java.util.Date(1546369140000L), null, java.util.Calendar.ERA));
-
         jLabel7.setText("Detalle del servicio");
+
+        jLabel8.setText("Vehiculo");
+
+        cVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cVehiculo.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cVehiculoPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel9.setText("Tipo de Servicio");
+
+        jLabel10.setText("Monto Pagado");
+
+        jLabel11.setText("Empresa Responsable");
+
+        tDetalle.setColumns(20);
+        tDetalle.setRows(5);
+        jScrollPane2.setViewportView(tDetalle);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,47 +179,40 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TituloVentana)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(135, 135, 135)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EmpresaResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TipoDeServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 62, Short.MAX_VALUE))
-                            .addComponent(jSeparator1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel6))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(Cancelar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(bCancelar))
-                                        .addComponent(IdentificadorServicioIN, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(MontoPagadoIN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))))
-                        .addGap(22, 22, 22))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TituloVentana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(bAceptar)
+                            .addGap(18, 18, 18)
+                            .addComponent(bCancelar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,77 +220,171 @@ public class AgregarServicioMantenimiento extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(TituloVentana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdentificadorServicioIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(MontoPagadoIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TipoDeServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpresaResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Cancelar)
-                        .addComponent(bCancelar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(dInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(dFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(cVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCancelar)
+                    .addComponent(bAceptar))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MontoPagadoINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MontoPagadoINActionPerformed
+    private void tTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MontoPagadoINActionPerformed
+    }//GEN-LAST:event_tTotalActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         new PantallaPrincipal(controlador).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bCancelarActionPerformed
 
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        RegEx regEx = new RegEx();
+        ServicioMantenimiento s = new ServicioMantenimiento();
+        if(regEx.chequearKilometraje(tID.getText()))
+        {
+            s.setIdentificador(Integer.parseInt(tID.getText()));
+            
+            if(regEx.chequearPrecio(tTotal.getText()))
+            {
+                s.setMontoPagado(Float.parseFloat(tTotal.getText()));
+                
+                if(dInicial.getDate() != null)
+                {
+                    s.setFechaInicio(dInicial.getDate());
+                    
+                    if(dFinal.getDate() != null)
+                    {
+                        if(dInicial.getDate().isBefore(dFinal.getDate()))
+                        {
+                            s.setFechaFinal(dFinal.getDate());
+                            
+                            if(!(cServicio.getSelectedItem().equals("...")))
+                            {
+                                s.setTipo((ETipoMantenimiento) cServicio.getSelectedItem());
+                                
+                                if(!(cEmpresa.getSelectedItem().equals("...")))
+                                {
+                                    s.setEmpresa((String) cEmpresa.getSelectedItem());
+                                    
+                                    if(!(cVehiculo.getSelectedItem().equals("...")))
+                                    {
+                                        Vehiculo v = controlador.getListaVehiculos().getVehiculo((String) cVehiculo.getSelectedItem());
+                                        s.setDetalle(tDetalle.getText());
+                                        if(v.getHistorialServiciosMantenimiento() != null)
+                                        {
+                                            v.getHistorialServiciosMantenimiento().add(s);
+                                        }
+                                        else
+                                        {
+                                            List<ServicioMantenimiento> lista = new ArrayList<>();
+                                            lista.add(s);
+                                            v.setHistorialServiciosMantenimiento(lista);
+                                        }
+                                        new PantallaPrincipal(controlador).setVisible(true);
+                                        this.setVisible(false);
+                                        controlador.serializador(controlador.getListaVehiculos(), "vehiculos.json");
+                                    }
+                                    else
+                                        System.out.println("Error vehiculo");
+                                }
+                                else
+                                    System.out.println("Error empresa responsable");
+                            }
+                            else
+                                System.out.println("Error tipo de servicio");
+                        }
+                        else
+                            System.out.println("Error en orden de fechas");
+                    }
+                    else
+                        System.out.println("Error fecha final");
+                }
+                else
+                    System.out.println("Error fecha inicial");
+            }
+            else
+                System.out.println("Error en monto pagado");
+        }
+        else
+            System.out.println("Error Identificador");
+    }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void cServicioPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cServicioPopupMenuWillBecomeVisible
+        cServicio.setModel(new DefaultComboBoxModel(ETipoMantenimiento.values()));
+    }//GEN-LAST:event_cServicioPopupMenuWillBecomeVisible
+
+    private void cVehiculoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cVehiculoPopupMenuWillBecomeVisible
+        cVehiculo.setModel(new DefaultComboBoxModel(controlador.getListaVehiculos().listarVehiculos()));
+    }//GEN-LAST:event_cVehiculoPopupMenuWillBecomeVisible
+
+    private void cEmpresaPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cEmpresaPopupMenuWillBecomeVisible
+        cEmpresa.setModel(new DefaultComboBoxModel(controlador.getListaEmpresas().listarEmpresas()));
+    }//GEN-LAST:event_cEmpresaPopupMenuWillBecomeVisible
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JComboBox<String> EmpresaResponsable;
-    private javax.swing.JSpinner FechaFinal;
-    private javax.swing.JSpinner FechaInicial;
-    private javax.swing.JTextField IdentificadorServicioIN;
-    private javax.swing.JTextField MontoPagadoIN;
-    private javax.swing.JComboBox<String> TipoDeServicio;
     private javax.swing.JLabel TituloVentana;
+    private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
+    private javax.swing.JComboBox<String> cEmpresa;
+    private javax.swing.JComboBox<String> cServicio;
+    private javax.swing.JComboBox<String> cVehiculo;
+    private com.github.lgooddatepicker.components.DatePicker dFinal;
+    private com.github.lgooddatepicker.components.DatePicker dInicial;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea tDetalle;
+    private javax.swing.JTextField tID;
+    private javax.swing.JTextField tTotal;
     // End of variables declaration//GEN-END:variables
 }

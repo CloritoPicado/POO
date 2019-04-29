@@ -31,8 +31,11 @@ public class Vehiculo {
     ETransmision transmision;
     List<ServicioMantenimiento> historialServiciosMantenimiento;
     List<CoordenadasVehiculo> listaCoordenadas;
+    String imagen;
 
     public Vehiculo() {
+        this.estado = EEstado.Activo;
+        this.rentado = false;
     }
 
     public Vehiculo(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas) {
@@ -200,6 +203,16 @@ public class Vehiculo {
     public void setListaCoordenadas(List<CoordenadasVehiculo> listaCoordenadas) {
         this.listaCoordenadas = listaCoordenadas;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 
     
     public String toString() {

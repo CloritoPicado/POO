@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 public class RegEx {
     
     
-    public static void main(String[] args) {
-        System.out.println(new RegEx().chequearRazonSocial("Howler Monkey Studios"));
+    public static void main(String[] args) {      
+        System.out.println(new RegEx().chequearPlaca("AAA111"));
     }
     
     public boolean chequearNombre(String s)
@@ -59,6 +59,30 @@ public class RegEx {
     public boolean chequearCedulaJuridica(String s)
     {
         final Pattern pattern = Pattern.compile("^[0-9]{10}$", Pattern.CASE_INSENSITIVE);
+        return pattern.matcher(s).matches();
+    }
+    
+    public boolean chequearAnho(String s)
+    {
+        final Pattern pattern = Pattern.compile("^[0-9]{4}$", Pattern.CASE_INSENSITIVE);
+        return pattern.matcher(s).matches();
+    }
+    
+    public boolean chequearKilometraje(String s)
+    {
+        final Pattern pattern = Pattern.compile("^[0-9]+$", Pattern.CASE_INSENSITIVE);
+        return pattern.matcher(s).matches();
+    }
+    
+    public boolean chequearPrecio(String s)
+    {
+        final Pattern pattern = Pattern.compile("^[0-9]+.[0-9]+$", Pattern.CASE_INSENSITIVE);
+        return pattern.matcher(s).matches();
+    }
+    
+    public boolean chequearPlaca(String s)
+    {
+        final Pattern pattern = Pattern.compile("^[A-Z]{3}[0-9]{3}$", Pattern.CASE_INSENSITIVE);
         return pattern.matcher(s).matches();
     }
     

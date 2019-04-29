@@ -30,6 +30,17 @@ public class ListaEmpresas {
         this.empresas = empresas;
     }
     
+    public String[] listarEmpresas()
+    {
+        String[] resultado = new String[empresas.size()];
+        for(int a = 0; a < empresas.size(); a++)
+        {
+            resultado[a] = empresas.get(a).getRazonSocial();
+        }
+        
+        return resultado;
+    }
+    
     
     
 }

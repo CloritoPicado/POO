@@ -5,8 +5,9 @@
  */
 package proyecto1;
 
+import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.*;
+
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.*;
  */
 public class Licencia {
     
-    int identificacion;
+    String identificacion;
     LocalDate fechaEmision;
     LocalDate fechaExpiracion;
     ETipoLicencia tipo;
@@ -24,7 +25,7 @@ public class Licencia {
     }
         
 
-    public Licencia(int identificacion, LocalDate fechaEmision, LocalDate fechaExpiracion, ETipoLicencia tipo, String imagen) {
+    public Licencia(String identificacion, LocalDate fechaEmision, LocalDate fechaExpiracion, ETipoLicencia tipo, String imagen) {
         this.identificacion = identificacion;
         this.fechaEmision = fechaEmision;
         this.fechaExpiracion = fechaExpiracion;
@@ -32,11 +33,11 @@ public class Licencia {
         this.imagen = imagen;
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 

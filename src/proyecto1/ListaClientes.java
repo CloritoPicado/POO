@@ -31,7 +31,17 @@ public class ListaClientes {
         this.clientes = clientes;
     }
     
-    
+    public boolean isRepetido(String s)
+    {
+        for (Cliente c : clientes) 
+        { 
+            if(c.getIdentificacion().equals(s))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
     
     
