@@ -88,5 +88,45 @@ public class ListaVehiculos {
         return resultado;
     }
     
+    public void reemplazar(String s, Vehiculo v)
+    {
+        vehiculos.remove(getVehiculo(s));
+        vehiculos.add(v);
+    }
+    
+    public List<Vehiculo> filtrarEstilo(EEstilo e, List<Vehiculo> lista)
+    {
+        List<Vehiculo> resultado = new ArrayList<>();
+        for(Vehiculo v : lista)
+        {
+            if(v.getEstado() == EEstado.Activo)
+            {
+                if(v.getEstilo() == e)
+                {
+                    resultado.add(v);
+                }
+            }
+        }
+        
+        return resultado;
+    }
+    
+    public List<Vehiculo> filtrarSede(ESede sede)
+    {
+        List<Vehiculo> resultado = new ArrayList<>();
+        for(Vehiculo v : vehiculos)
+        {
+            if(v.getEstado() == EEstado.Activo)
+            {
+                if(v.getSedePertenencia()== sede)
+                {
+                    resultado.add(v);
+                }
+            }
+        }
+        
+        return resultado;
+    }
+    
     
 }

@@ -281,7 +281,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bMantenimientoActionPerformed
 
     private void bNuevaReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevaReservacionActionPerformed
-        // TODO add your handling code here:
+        new AgregarReserva(controlador).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bNuevaReservacionActionPerformed
 
     private void bConsultarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarReservacionActionPerformed

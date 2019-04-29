@@ -5,6 +5,7 @@
  */
 package proyecto1;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -18,15 +19,15 @@ public class Reserva {
     int numReserva;
     Operador operador;
     List<ServiciosOpcionales> serviciosOpcionales;
-    Date fechaInicio;
-    Date fechaFinal;
+    LocalDate fechaInicio;
+    LocalDate fechaFinal;
     ESede sedeInicio;
     ESede sedeFinal;
 
     public Reserva() {
     }
 
-    public Reserva(Cliente cliente, Vehiculo vehiculo, int numReserva, Operador operador, List<ServiciosOpcionales> serviciosOpcionales, Date fechaInicio, Date fechaFinal, ESede sedeInicio, ESede sedeFinal) {
+    public Reserva(Cliente cliente, Vehiculo vehiculo, int numReserva, Operador operador, List<ServiciosOpcionales> serviciosOpcionales, LocalDate fechaInicio, LocalDate fechaFinal, ESede sedeInicio, ESede sedeFinal) {
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.numReserva = numReserva;
@@ -78,19 +79,19 @@ public class Reserva {
         this.serviciosOpcionales = serviciosOpcionales;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFinal() {
+    public LocalDate getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 

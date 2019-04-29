@@ -30,6 +30,9 @@ public class ListaReservas {
         this.reservas = reservas;
     }
     
-    
+    public int numeroReserva()
+    {
+        return reservas.get(reservas.size()-1).getNumReserva()+1;
+    }
     
 }

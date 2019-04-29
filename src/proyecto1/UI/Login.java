@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         this.controlador = new Controlador();
+        //new SeleccionarCarro(controlador, null).setVisible(true);        
         initComponents();
     }
 
@@ -175,6 +176,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+                
             }
         });
     }

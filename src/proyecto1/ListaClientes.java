@@ -43,6 +43,19 @@ public class ListaClientes {
         return false;
     }
     
+    public Cliente buscarCliente(String s)
+    {
+        for(int a = 0; a < clientes.size(); a++)
+        {
+            if(clientes.get(a).getIdentificacion().equals(s))
+            {
+                return clientes.get(a);                
+            }
+        }
+        
+        return null;
+    }
+    
     
     
 }

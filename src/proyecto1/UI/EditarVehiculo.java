@@ -462,39 +462,14 @@ public class EditarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_cEstiloActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        //new Vehiculo(EEstado.Activo, false, tPlaca.getText(), tAnho.getText(), EEstilo.Compacto, cColor.getSelectedItem().toString(), tMarca.getText(), (int) cPasajeros.getSelectedItem().toString(), (float) tKilometro.getText(), int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas);
-        //(EEstado estado, boolean rentado, String placa, int anho, EEstilo estilo, String color, String marca, int capacidad, float kilometraje, int numPuertas, String numVim, int mpg, ESede sedePertenencia, float costoPorDia, int capacidadMaletas, ETransmision transmision, List<ServicioMantenimiento> historialServiciosMantenimiento, List<CoordenadasVehiculo> listaCoordenadas)
-       /*Vehiculo v =  new Vehiculo(EEstado.Activo,
-               false,
-               tPlaca.getText(),
-               Integer.parseInt(tAnho.getText()),
-               (EEstilo)cEstilo.getSelectedItem(),
-               (String)cColor.getSelectedItem(),
-               tMarca.getText(),
-               Integer.parseInt((String)cPasajeros.getSelectedItem()),
-               Float.parseFloat(tKilometro.getText()),
-               Integer.parseInt((String)cPuertas.getSelectedItem()),
-               tVIN.getText(),
-               Integer.parseInt(tMPG.getText()),
-               null,
-//               (ESede)cSede.getSelectedItem(),
-               Float.parseFloat(tCostoXDia.getText()),
-               Integer.parseInt(tMaletero.getText()),
-//               (ETransmision)cTransmision.getSelectedItem(),
-               null,
-               null,
-               null);*/
        new PantallaPrincipal(controlador).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        /*Vehiculo vehiculo = new Vehiculo();
+        Vehiculo vehiculo = new Vehiculo();
         RegEx regEx = new RegEx();
-        if(regEx.chequearID(tVIN.getText()))
-        {
-            vehiculo.setNumVim(tVIN.getText());
-            
+
             if(regEx.chequearAnho(tAnho.getText()))
             {
                 vehiculo.setAnho(Integer.parseInt(tAnho.getText()));
@@ -519,28 +494,25 @@ public class EditarVehiculo extends javax.swing.JFrame {
                                 {
                                     vehiculo.setCapacidadMaletas(Integer.parseInt(tMaletero.getText()));
                                     
-                                    if(regEx.chequearPlaca(tPlaca.getText()))
-                                    {
-                                        vehiculo.setPlaca(tPlaca.getText());
+                                    if (regEx.chequearPlaca(tPlaca.getText())) {
                                         
-                                        if(!foto.equals(""))
-                                        {
-                                            vehiculo.setEstilo((EEstilo) cEstilo.getSelectedItem());
-                                            vehiculo.setColor((String) cColor.getSelectedItem());
-                                            vehiculo.setCapacidad(Integer.parseInt((String)cPasajeros.getSelectedItem()));
-                                            vehiculo.setNumPuertas(Integer.parseInt((String)cPuertas.getSelectedItem()));
-                                            vehiculo.setTransmision((ETransmision) cTransmision.getSelectedItem());
-                                            vehiculo.setSedePertenencia((ESede) cSede.getSelectedItem());
-                                            vehiculo.setImagen(foto);
-                                            ListaVehiculos listaVehiculos = controlador.getListaVehiculos();
-                                            listaVehiculos.getlVehiculos().add(vehiculo);
-                                            controlador.serializador(listaVehiculos, "vehiculos.json");
-                                            foto = "";
-                                            new PantallaPrincipal(controlador).setVisible(true);
-                                            this.setVisible(false);
-                                        }
-                                        else
-                                            System.out.println("Error foto");
+                                        vehiculo.setPlaca(tPlaca.getText());
+                                        vehiculo.setImagen(foto);
+                                        vehiculo.setNumVim((String) cVINs.getSelectedItem());
+                                        vehiculo.setEstilo((EEstilo) cEstilo.getSelectedItem());
+                                        vehiculo.setColor((String) cColor.getSelectedItem());
+                                        vehiculo.setCapacidad(Integer.parseInt((String) cPasajeros.getSelectedItem()));
+                                        vehiculo.setNumPuertas(Integer.parseInt((String) cPuertas.getSelectedItem()));
+                                        vehiculo.setTransmision((ETransmision) cTransmision.getSelectedItem());
+                                        vehiculo.setSedePertenencia((ESede) cSede.getSelectedItem());
+                                        vehiculo.setImagen(foto);
+                                        ListaVehiculos listaVehiculos = controlador.getListaVehiculos();
+                                        listaVehiculos.reemplazar((String) cVINs.getSelectedItem(), vehiculo);
+                                        controlador.serializador(listaVehiculos, "vehiculos.json");
+                                        foto = "";
+                                        new PantallaPrincipal(controlador).setVisible(true);
+                                        this.setVisible(false);
+                                        
                                     }
                                     else
                                         System.out.println("Error placa");
@@ -562,9 +534,8 @@ public class EditarVehiculo extends javax.swing.JFrame {
             }
             else
                 System.out.println("Error año");
-        }
-        else
-            System.out.println("Error VIN");*/
+        
+
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void cVINsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cVINsActionPerformed
@@ -573,18 +544,20 @@ public class EditarVehiculo extends javax.swing.JFrame {
         bloquearElementos(false);
         tAnho.setText(v.getAnho()+"");
         tMarca.setText(v.getMarca());
-        tKilometro.setText(v.getKilometraje()+"");
+        tKilometro.setText((int)v.getKilometraje()+"");
         tMPG.setText(v.getMpg()+"");
         tCostoXDia.setText(v.getCostoPorDia()+"");
         tMaletero.setText(v.getCapacidadMaletas()+"");
         tPlaca.setText(v.getPlaca());
         cEstilo.setSelectedItem(v.getEstilo());
         cColor.setSelectedItem(v.getColor());
-        cPasajeros.setSelectedItem(v.getCapacidad());
-        cPuertas.setSelectedItem(v.getNumPuertas());
+        cPasajeros.setSelectedItem(v.getCapacidad()+"");
+        cPuertas.setSelectedItem(v.getNumPuertas()+"");
         cTransmision.setSelectedItem(v.getTransmision());
         cSede.setSelectedItem(v.getSedePertenencia());
+        foto = v.getImagen();
         lImagen.setIcon(new ImageIcon("Imagenes/Vehiculos/"+v.getImagen()));
+        
       
     }//GEN-LAST:event_cVINsActionPerformed
 
